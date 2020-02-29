@@ -8,7 +8,10 @@ namespace PAM2Zaliczenie.Models
     {
         private string Password { get; set; }
         private string Login { get; set; }
-        public PAM_KillersDBContext(string password,string login)
+        private string Server { get; set; }
+        private string DbName { get; set; }
+        private string Port { get; set; }
+        public PAM_KillersDBContext(string password,string login, string server, string dbName, string port)
         {
             this.Password = password;
             this.Login = login;
@@ -29,7 +32,7 @@ namespace PAM2Zaliczenie.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:pamkillers.database.windows.net,1433;Initial Catalog=PAM_KillersDB;Persist Security Info=False;User ID="+Login+";Password="+Password+";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=tcp:"+this.Server+","+this.Port+";Initial Catalog="+this.DbName+";Persist Security Info=False;User ID="+this.Login+";Password="+this.Password+";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
