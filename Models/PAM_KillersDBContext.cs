@@ -15,6 +15,9 @@ namespace PAM2Zaliczenie.Models
         {
             this.Password = password;
             this.Login = login;
+            this.Server = server;
+            this.DbName = dbName;
+            this.Port = port;
         }
 
         public PAM_KillersDBContext(DbContextOptions<PAM_KillersDBContext> options)
