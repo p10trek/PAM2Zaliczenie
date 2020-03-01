@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# LaTeX pliki tymczasowe potrzebne do wygenerowania pdf
+Dokumentacja/Dokumentacja.aux
+Dokumentacja/Dokumentacja.synctex.gz
+Dokumentacja/Dokumentacja.log
