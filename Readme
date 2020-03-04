@@ -4,12 +4,8 @@ Specjalnoœæ: Projektowanie aplikacji mobilnych (n2PAM1 2020)
 
 Do zaimplementowania:
 [] HTML5, szkielet aplikacji webowej
-[] CSS3, ostylowanie aplikacji webowej
 [] Formularze, wykorzystanie formularza do przesy³u danych do aplikacji
-[] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych
-[] Router, zarz¹dzenie œcie¿kami dostêpu aplikacji
 [] Uwierzytelnianie, umo¿liwienie rejestracji i logowania u¿ytkowników
-[] MVC, wykorzystanie wzorca model-widok-kontroler
 [] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych
 [] ORM, system mapowania relacyjno-obiektowego
 [] Wystawienie API, wystawienie udokumentowanych adresów URL z informacjami
@@ -25,4 +21,9 @@ Do zaimplementowania:
 [] SEO, wprowadzenie optymalizacji dla wyszukiwarek
 
 Zaimplementowane:
+[X] MVC, wykorzystanie wzorca model-widok-kontroler
+[X] Router, zarz¹dzenie œcie¿kami dostêpu aplikacji - Startup.cs
+[X] CSS3, ostylowanie aplikacji webowej - Bootstrap
+[X] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych - Azure AQL/Entity Framework
+
 Do rozwa¿enia:
