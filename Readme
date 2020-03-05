@@ -16,7 +16,6 @@ Do zaimplementowania:
 [] RWD, poprawne wyœwietlanie frontendu na ró¿nych urz¹dzeniach
 [] Logger, logowanie akcji w aplikacji
 [] Cache, np. wyszukiwarka wykorzystuj¹ca system pamiêci podrêcznej
-[] System zarz¹dzania zale¿noœciami wykorzystany przy projekcie
 [] Automatyzacja, na przyk³ad wykorzystanie Sass albo minifikowanie JS
 [] SEO, wprowadzenie optymalizacji dla wyszukiwarek
 
@@ -25,5 +24,7 @@ Zaimplementowane:
 [X] Router, zarz¹dzenie œcie¿kami dostêpu aplikacji - Startup.cs
 [X] CSS3, ostylowanie aplikacji webowej - Bootstrap
 [X] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych - Azure AQL/Entity Framework
+[X] System zarz¹dzania zale¿noœciami wykorzystany przy projekcie - NuGet
+
 
 Do rozwa¿enia:
