@@ -1,0 +1,13 @@
+\babel@toc {polish}{}
+\contentsline {section}{\numberline {1}Opis funkcjonalny systemu}{2}%
+\contentsline {section}{\numberline {2}Wdrożone kwalifikacje}{2}%
+\contentsline {section}{\numberline {3}Opis technologiczny}{2}%
+\contentsline {subsection}{\numberline {3.1}C\#}{2}%
+\contentsline {subsection}{\numberline {3.2}ASP.NET Core}{2}%
+\contentsline {subsection}{\numberline {3.3}Bootstrap}{2}%
+\contentsline {subsection}{\numberline {3.4}Entity Framework}{3}%
+\contentsline {subsection}{\numberline {3.5}MySQL?}{3}%
+\contentsline {section}{\numberline {4}Instrukcja lokalnego i zdalnego uruchomienia systemu}{3}%
+\contentsline {subsection}{\numberline {4.1}Lokalne uruchomienie systemu}{3}%
+\contentsline {subsection}{\numberline {4.2}Zdalne uruchomienie systemu}{3}%
+\contentsline {section}{\numberline {5}Wnioski projektowe}{3}%
