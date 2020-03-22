@@ -1,23 +1,14 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using PAM2Zaliczenie.Models;
 
-namespace PAM2Zaliczenie.Models
+namespace PAM2Zaliczenie.DAL
 {
     public partial class PAM_KillersDBContext : DbContext
     {
-        private string Password { get; set; }
-        private string Login { get; set; }
-        private string Server { get; set; }
-        private string DbName { get; set; }
-        private string Port { get; set; }
-        public PAM_KillersDBContext(string password,string login, string server, string dbName, string port)
+        public PAM_KillersDBContext()
         {
-            this.Password = password;
-            this.Login = login;
-            this.Server = server;
-            this.DbName = dbName;
-            this.Port = port;
         }
 
         public PAM_KillersDBContext(DbContextOptions<PAM_KillersDBContext> options)
@@ -35,7 +26,7 @@ namespace PAM2Zaliczenie.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:"+this.Server+","+this.Port+";Initial Catalog="+this.DbName+";Persist Security Info=False;User ID="+this.Login+";Password="+this.Password+";MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=PAM_KillersDB;Trusted_Connection=True;");
             }
         }
 
@@ -43,40 +34,26 @@ namespace PAM2Zaliczenie.Models
         {
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.ToTable("employee");
-
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.IsEmployed).HasColumnName("isEmployed");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                    .HasMaxLength(50);
 
-                entity.Property(e => e.Position)
-                    .IsRequired()
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                entity.Property(e => e.Position).IsRequired();
 
                 entity.Property(e => e.Surname)
                     .IsRequired()
-                    .HasMaxLength(20)
-                    .IsFixedLength();
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<TaskType>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Comment).HasColumnType("ntext");
+                entity.Property(e => e.Comment).IsRequired();
 
                 entity.Property(e => e.Cost).HasColumnType("money");
-
-                entity.Property(e => e.Duration)
-                    .IsRequired()
-                    .IsRowVersion()
-                    .IsConcurrencyToken();
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -87,32 +64,37 @@ namespace PAM2Zaliczenie.Models
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
+                entity.Property(e => e.StartTime).HasColumnType("datetime");
 
-                entity.Property(e => e.StartTime).HasColumnType("smalldatetime");
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.Tasks)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tasks_Emoloee");
 
-                entity.Property(e => e.TaskTypeId).HasColumnName("TaskTypeID");
+                entity.HasOne(d => d.TaskType)
+                    .WithMany(p => p.Tasks)
+                    .HasForeignKey(d => d.TaskTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tasks_TasksType");
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Tasks)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Tasks_Users");
             });
 
             modelBuilder.Entity<Users>(entity =>
             {
-                entity.ToTable("users");
-
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Login)
                     .IsRequired()
-                    .HasColumnName("login")
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasColumnName("password")
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                entity.Property(e => e.Password).IsRequired();
             });
 
             OnModelCreatingPartial(modelBuilder);

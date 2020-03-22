@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PAM2Zaliczenie.DAL;
 
 namespace PAM2Zaliczenie
 {
@@ -24,6 +26,7 @@ namespace PAM2Zaliczenie
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<PAM_KillersDBContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,8 +53,16 @@ namespace PAM2Zaliczenie
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" });
+       // pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "Users",
+            //        pattern: "{controller=Users}/{action=Index}/{id?}");
+            //});
         }
     }
 }

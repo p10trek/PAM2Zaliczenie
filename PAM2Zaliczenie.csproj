@@ -5,18 +5,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Users - kopiować\**" />
+    <Content Remove="Views\Users - kopiować\**" />
+    <EmbeddedResource Remove="Views\Users - kopiować\**" />
+    <None Remove="Views\Users - kopiować\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Create.cshtml" />
+    <Content Remove="Views\Delete.cshtml" />
+    <Content Remove="Views\Details.cshtml" />
+    <Content Remove="Views\Edit.cshtml" />
+    <Content Remove="Views\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DAL\" />
-    <Folder Include="BLL\" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
 

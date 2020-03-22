@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using PAM2Zaliczenie.BLL;
+using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Models;
 
 namespace PAM2Zaliczenie.Controllers
@@ -20,6 +22,7 @@ namespace PAM2Zaliczenie.Controllers
 
         public IActionResult Index()
         {
+            PAM_KillersDBContext context = new PAM_KillersDBContext();
             return View();
         }
 

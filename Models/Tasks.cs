@@ -11,5 +11,9 @@ namespace PAM2Zaliczenie.Models
         public int UserId { get; set; }
         public bool IsReady { get; set; }
         public DateTime StartTime { get; set; }
+
+        public virtual Employee Employee { get; set; }
+        public virtual TaskType TaskType { get; set; }
+        public virtual Users User { get; set; }
     }
 }
