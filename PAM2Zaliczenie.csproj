@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.4.1" />
+    <PackageReference Include="bootstrap.sass" Version="4.4.1" />
     <Compile Remove="Views\Users - kopiować\**" />
     <Content Remove="Views\Users - kopiować\**" />
     <EmbeddedResource Remove="Views\Users - kopiować\**" />
