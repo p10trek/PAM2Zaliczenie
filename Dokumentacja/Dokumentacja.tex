@@ -7,6 +7,7 @@
 \usepackage{amsfonts}
 \usepackage[left=3.5cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{graphicx}
+\usepackage{indentfirst} 
 \author{Karpiński Maciej\\Radlak Piotr\\Wiecheć Sebastian\\\\\\\\\includegraphics[width=0.7\linewidth]{img/logoPWSZ.jpg}\\\\\\\\Projektowanie i programowanie systemów internetowych I}
 \title{Projekt systemu zleceń mafijnych\\Mafia 2.0}
 
@@ -32,7 +33,7 @@
 	
 	%sekcja trzecia, opis wykorzystanych technologii
 	\section{Opis technologiczny}
-		Przy tworzeniu projektu Mafiozo 2.0 wykorzystano technologie:
+		Przy tworzeniu projektu Mafia 2.0 wykorzystano technologie:
 
 		\subsection{C\#}
 			C\# jest obiektowym językiem programowania, zaprojektowanym w latach 1998 – 2001 dla firmy Microsoft.
@@ -41,14 +42,14 @@
 			Wykorzystanie CLI sprawia, że kod programu jest wieleplatformowy (dopóki istnieje odpowiednie środowisko uruchomieniowe).
 			C\# posiada wiele wspólnych cech z językami Object Pascal, Delphi, C++ i Java a najważniejszymi cechami C\# są:
 			\begin{itemize}
-				\item Obiektowość z hierarchią o jednym elemencie nadrzędnym (podobnie jak w Javie),
-				\item Zarządzaniem pamięcią zajmuje się środowisko uruchomieniowe,
-				\item Właściwości i indeksery,
-				\item Delegaty i zdarzenia – rozwinięcie wskaźników C++,
-				\item Typy ogólne, generyczne, częściowe, Nullable, domniemane, anonimowe
-				\item Dynamiczne tworzenie kodu,
-				\item Metody anonimowe
-				\item Wyrażenia lambda
+				\item Obiektowość z hierarchią o jednym elemencie nadrzędnym (podobnie jak w Javie);
+				\item Zarządzaniem pamięcią zajmuje się środowisko uruchomieniowe;
+				\item Właściwości i indeksery;
+				\item Delegaty i zdarzenia – rozwinięcie wskaźników C++;
+				\item Typy ogólne, generyczne, częściowe, Nullable, domniemane, anonimowe;
+				\item Dynamiczne tworzenie kodu;
+				\item Metody anonimowe;
+				\item Wyrażenia lambda.
 			\end{itemize}
 			
 		\subsection{ASP.NET Core}
@@ -57,13 +58,20 @@
 			internetową.
 			
 		\subsection{Bootstrap}		
-			Opis Bootstrap
+			Bootstrap jest frameworkiem CSS, który koncentruje się na uproszczeniu tworzenia frontendu stron internetowych. Rezultatem dodania Bootstrapa do projektu jest jednolity wygląd
+			wszystkich elementów interfejsów we wszystkich przeglądarkach. Dodatkowo programiści mogą skorzystać z klas w CSS w celu dalszego dostosowywania wyglądu ich zawartości. Bootstrap
+			zawiera kilka składników JavaScript, które zapewniają dodatkowe elementy interfejsu użytkownika, takie jak okna dialogowe, podpowiedzi czy karuzele. 
 
 		\subsection{Entity Framework}		 
-		 Entity Framework
+		 Entity Framework jest technologią open source do mapowania obiektowo – relacyjnego (ORM), które wspierają rozwój aplikacji zorientowanych na dane.
+		 Entity Framework umożliwia programistom pracę z danymi w postaci obiektów i właściwości specyficznych dla domeny, bez konieczności przejmowania się bazowymi
+		 tabelami i kolumnami baz danych, w których dane są przechowywane. 
 
-		\subsection{MySQL?}		 
-		 	Opis MySQL?
+		\subsection{MSSQL}		 
+		 	Microsoft SQL Server jest systemem zarządzania relacyjnymi bazami danych opracowany przez firmę Microsoft. Cechą charakterystyczną jest wykorzystanie głównie język zapytań
+		 	Transact-SQL, który jest rozwinięciem standardu ANSI/ISO. W projekcie wykorzystano wersje Express Edition, która jest bezpłatną edycją programu SQL Server, która obejmuje podstawowy
+		 	silnik bazy danych, nieposiadający ograniczenia obsługiwanych baz danych lub użytkowników. Ograniczenia, jakie występują w wersji Express Edition to: korzystanie z jednego
+		 	procesora, 1 GB pamięci RAM, 10GB plików bazy danych czy brak SQL Agent. 
 	
 	%Sekcja czwarta, instrukcja lokalnego i zdalnego uruchomienia systemu
 	\section{Instrukcja lokalnego i zdalnego uruchomienia systemu}
