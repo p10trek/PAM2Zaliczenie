@@ -3,7 +3,6 @@ Kierunek: Informatyka
 Specjalnoœæ: Projektowanie aplikacji mobilnych (n2PAM1 2020)
 
 Do zaimplementowania:
-[] HTML5, szkielet aplikacji webowej
 [] Formularze, wykorzystanie formularza do przesy³u danych do aplikacji
 [] Uwierzytelnianie, umo¿liwienie rejestracji i logowania u¿ytkowników
 [] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych
@@ -25,6 +24,7 @@ Zaimplementowane:
 [X] CSS3, ostylowanie aplikacji webowej - Bootstrap
 [X] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych - Azure AQL/Entity Framework
 [X] System zarz¹dzania zale¿noœciami wykorzystany przy projekcie - NuGet
+[X] HTML5, szkielet aplikacji webowej - Razor Enginge
 
 
 Do rozwa¿enia:
