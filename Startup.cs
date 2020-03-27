@@ -57,6 +57,7 @@ namespace PAM2Zaliczenie
                     defaults: new { controller = "Home", action = "Index" });
        // pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+      
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
