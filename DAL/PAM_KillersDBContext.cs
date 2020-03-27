@@ -17,6 +17,7 @@ namespace PAM2Zaliczenie.DAL
         }
 
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<EmployeesSkils> EmployeesSkils { get; set; }
         public virtual DbSet<TaskType> TaskType { get; set; }
         public virtual DbSet<Tasks> Tasks { get; set; }
         public virtual DbSet<Users> Users { get; set; }
@@ -26,6 +27,7 @@ namespace PAM2Zaliczenie.DAL
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                //todo: powinno byc zaszyfrowane w configu
                 optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=PAM_KillersDB;Trusted_Connection=True;");
             }
         }
@@ -47,10 +49,23 @@ namespace PAM2Zaliczenie.DAL
                     .HasMaxLength(50);
             });
 
+            modelBuilder.Entity<EmployeesSkils>(entity =>
+            {
+                entity.HasOne(d => d.Employee)
+                    .WithMany(p => p.EmployeesSkils)
+                    .HasForeignKey(d => d.EmployeeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_EmployeesSkils_Employee");
+
+                entity.HasOne(d => d.TaskType)
+                    .WithMany(p => p.EmployeesSkils)
+                    .HasForeignKey(d => d.TaskTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_EmployeesSkils_TaskType");
+            });
+
             modelBuilder.Entity<TaskType>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Comment).IsRequired();
 
                 entity.Property(e => e.Cost).HasColumnType("money");
@@ -62,21 +77,19 @@ namespace PAM2Zaliczenie.DAL
 
             modelBuilder.Entity<Tasks>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.StartTime).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Employee)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.EmployeeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Tasks_Emoloee");
+                    .HasConstraintName("FK_Tasks_Employee");
 
                 entity.HasOne(d => d.TaskType)
                     .WithMany(p => p.Tasks)
                     .HasForeignKey(d => d.TaskTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Tasks_TasksType");
+                    .HasConstraintName("FK_Tasks_TaskType");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Tasks)
@@ -87,8 +100,6 @@ namespace PAM2Zaliczenie.DAL
 
             modelBuilder.Entity<Users>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Login)
                     .IsRequired()
                     .HasMaxLength(50)

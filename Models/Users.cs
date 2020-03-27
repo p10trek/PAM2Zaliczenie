@@ -12,8 +12,11 @@ namespace PAM2Zaliczenie.Models
 
         public int Id { get; set; }
         public string Login { get; set; }
-
-        public string Password { get; set; }
+        private string password;
+        //todo : dodać pole email
+        //todo : obsluga ciasteczek
+        //todo : dodanie pola w tabeli ktore definiowalo by poziom uprawnien uzytkownik, administrator
+        public string Password { get { return password; } set { password = value; } }
 
         public virtual ICollection<Tasks> Tasks { get; set; }
 
@@ -34,9 +37,6 @@ namespace PAM2Zaliczenie.Models
                 return hashedInputStringBuilder.ToString();
             }
         }
+        //public int Privilages{get ;set };
     }
 }
-
-
-
-

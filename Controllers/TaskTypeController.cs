@@ -10,22 +10,22 @@ using PAM2Zaliczenie.Models;
 
 namespace PAM2Zaliczenie.Controllers
 {
-    public class UsersController : Controller
+    public class TaskTypeController : Controller
     {
         private readonly PAM_KillersDBContext _context;
 
-        public UsersController(PAM_KillersDBContext context)
+        public TaskTypeController(PAM_KillersDBContext context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: TaskTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            return View(await _context.TaskType.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // GET: TaskTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace PAM2Zaliczenie.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users
+            var taskType = await _context.TaskType
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            if (taskType == null)
             {
                 return NotFound();
             }
 
-            return View(users);
+            return View(taskType);
         }
 
-        // GET: Users/Create
+        // GET: TaskTypes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: TaskTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,Password")] Users users)
+        public async Task<IActionResult> Create([Bind("Id,Name,Duration,Cost,Comment")] TaskType taskType)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(users);
+                _context.Add(taskType);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(users);
+            return View(taskType);
         }
 
-        // GET: Users/Edit/5
+        // GET: TaskTypes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace PAM2Zaliczenie.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
+            var taskType = await _context.TaskType.FindAsync(id);
+            if (taskType == null)
             {
                 return NotFound();
             }
-            return View(users);
+            return View(taskType);
         }
 
-        // POST: Users/Edit/5
+        // POST: TaskTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Duration,Cost,Comment")] TaskType taskType)
         {
-            if (id != users.Id)
+            if (id != taskType.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace PAM2Zaliczenie.Controllers
             {
                 try
                 {
-                    _context.Update(users);
+                    _context.Update(taskType);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsersExists(users.Id))
+                    if (!TaskTypeExists(taskType.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace PAM2Zaliczenie.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(users);
+            return View(taskType);
         }
 
-        // GET: Users/Delete/5
+        // GET: TaskTypes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace PAM2Zaliczenie.Controllers
                 return NotFound();
             }
 
-            var users = await _context.Users
+            var taskType = await _context.TaskType
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (users == null)
+            if (taskType == null)
             {
                 return NotFound();
             }
 
-            return View(users);
+            return View(taskType);
         }
 
-        // POST: Users/Delete/5
+        // POST: TaskTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var users = await _context.Users.FindAsync(id);
-            _context.Users.Remove(users);
+            var taskType = await _context.TaskType.FindAsync(id);
+            _context.TaskType.Remove(taskType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsersExists(int id)
+        private bool TaskTypeExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.TaskType.Any(e => e.Id == id);
         }
     }
 }

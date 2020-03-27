@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+//todo: podlaczenie do api sprawdzanie wartoœci walut (bc)
+//todo: button lokalizacji lub spr przez api po IP
 namespace PAM2Zaliczenie
 {
     public class Program
