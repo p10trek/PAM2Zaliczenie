@@ -9,12 +9,12 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color: #e5e5e5;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #1b6ec2;
+  background-color: #d6d2d2;
   border-color: #1861ac;
 }
 
@@ -53,19 +53,37 @@ button.accept-policy {
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
+
 .footer {
   position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
+  background-color: white;
   white-space: nowrap;
+  z-index: 3;
   line-height: 60px; /* Vertically center the text there */
 }
+
+
+ .app-wrapper {
+     width: 100vw;
+     height: 100vh;
+     position: relative;
+     overflow: hidden;
+ }
+
+ main {
+     position: relative;
+ }
+
+ .main-background {
+
+position: absolute;
+z-index: -2;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+ }
