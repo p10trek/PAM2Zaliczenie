@@ -16,7 +16,6 @@ namespace PAM2Zaliczenie.Models
 
 
         public string Password { get { return _password; } set { _password = passwordSHA512(value); } }
-        //todo : dodać pole email
         public string emailAddress { get; set; }
         //todo : obsluga ciasteczek
         //todo : dodanie pola w tabeli ktore definiowalo by poziom uprawnien uzytkownik, administrator
