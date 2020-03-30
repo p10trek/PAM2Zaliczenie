@@ -12,16 +12,19 @@ namespace PAM2Zaliczenie.Models
 
         public int Id { get; set; }
         public string Login { get; set; }
-        private string password;
+        private string _password;
+
+
+        public string Password { get { return _password; } set { _password = passwordSHA512(value); } }
         //todo : dodać pole email
         //todo : obsluga ciasteczek
         //todo : dodanie pola w tabeli ktore definiowalo by poziom uprawnien uzytkownik, administrator
-        public string Password { get { return password; } set { password = value; } }
+
 
         public virtual ICollection<Tasks> Tasks { get; set; }
 
         //password hash SHA512 
-        public string passwordSHA512(string inputPassword)
+        private string passwordSHA512(string inputPassword)
         {
             var bytes = System.Text.Encoding.UTF8.GetBytes(inputPassword);
             using (var hash = System.Security.Cryptography.SHA512.Create())

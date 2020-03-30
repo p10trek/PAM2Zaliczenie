@@ -6,13 +6,11 @@ Do zaimplementowania:
 [] Formularze, wykorzystanie formularza do przesy³u danych do aplikacji
 [] Uwierzytelnianie, umo¿liwienie rejestracji i logowania u¿ytkowników
 [] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych
-[] ORM, system mapowania relacyjno-obiektowego
 [] Wystawienie API, wystawienie udokumentowanych adresów URL z informacjami
-[] Konsumowanie API, wykorzystanie zewnêtrznego API w systemie - API Google Maps/OpenStreetMap w celu zaznaczanie miejsca zlecenia/najczêœciej przebywanej lokacji celu
+[] Konsumowanie API, wykorzystanie zewnêtrznego API w systemie
 [] AJAX, wykorzystanie asynchronicznych zapytañ ze strony frontendu
 [] Mail, wysy³anie emaili z systemu - Potwierdzenie z³o¿enia zlecenia
 [] Lokalizacja, umo¿liwienie wielojêzycznoœci systemu
-[] RWD, poprawne wyœwietlanie frontendu na ró¿nych urz¹dzeniach
 [] Logger, logowanie akcji w aplikacji
 [] Cache, np. wyszukiwarka wykorzystuj¹ca system pamiêci podrêcznej
 [] Automatyzacja, na przyk³ad wykorzystanie Sass albo minifikowanie JS
@@ -22,9 +20,11 @@ Zaimplementowane:
 [X] MVC, wykorzystanie wzorca model-widok-kontroler
 [X] Router, zarz¹dzenie œcie¿kami dostêpu aplikacji - Startup.cs
 [X] CSS3, ostylowanie aplikacji webowej - Bootstrap
-[X] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych - Azure AQL/Entity Framework
+[X] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych - MSSQL/Entity Framework
 [X] System zarz¹dzania zale¿noœciami wykorzystany przy projekcie - NuGet
 [X] HTML5, szkielet aplikacji webowej - Razor Enginge
+[X] ORM, system mapowania relacyjno-obiektowego - Entity framework
+[X] RWD, poprawne wyœwietlanie frontendu na ró¿nych urz¹dzeniach - Bootstrap
 
 
 Do rozwa¿enia:
