@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Models;
@@ -54,7 +51,7 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,Password")] Users users)
+        public async Task<IActionResult> Create([Bind("Id,Login,emailAddress,Password")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +83,7 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password")] Users users)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,emailAddress,Password")] Users users)
         {
             if (id != users.Id)
             {

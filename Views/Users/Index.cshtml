@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.Login)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.emailAddress)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>
             <th></th>
@@ -27,6 +30,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailAddress)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Password)

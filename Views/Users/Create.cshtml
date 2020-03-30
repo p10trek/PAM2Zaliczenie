@@ -1,4 +1,5 @@
-﻿@model PAM2Zaliczenie.Models.Users
+﻿@using Microsoft.EntityFrameworkCore.Storage.ValueConversion
+@model PAM2Zaliczenie.Models.Users
 
 @{
     ViewData["Title"] = "Create";
@@ -13,10 +14,28 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @{
+                //todo : dodanie autoinkrementacji ID, zamiast ręcznego ustawiania}
+                //szybki fix aby testować dodawanie użytkowników do bazy
+            }
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            @{
+                //koniec fixu
+            }
+
             <div class="form-group">
                 <label asp-for="Login" class="control-label"></label>
                 <input asp-for="Login" class="form-control" />
                 <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="emailAddress" class="control-label"></label>
+                <input asp-for="emailAddress" class="form-control" />
+                <span asp-validation-for="emailAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
