@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.emailAddress)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.UserAccessLevel)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Password)
             </th>
             <th></th>
@@ -33,6 +36,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.emailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserAccessLevel)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Password)

@@ -13,12 +13,13 @@ namespace PAM2Zaliczenie.Models
         public int Id { get; set; }
         public string Login { get; set; }
         private string _password;
-
-
         public string Password { get { return _password; } set { _password = passwordSHA512(value); } }
         public string emailAddress { get; set; }
+        public int UserAccessLevel { get; set; }
+
+
         //todo : obsluga ciasteczek
-        //todo : dodanie pola w tabeli ktore definiowalo by poziom uprawnien uzytkownik, administrator
+
 
 
         public virtual ICollection<Tasks> Tasks { get; set; }
