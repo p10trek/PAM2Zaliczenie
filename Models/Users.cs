@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PAM2Zaliczenie.Models
 {
@@ -17,10 +16,7 @@ namespace PAM2Zaliczenie.Models
         public string emailAddress { get; set; }
         public int UserAccessLevel { get; set; }
 
-
         //todo : obsluga ciasteczek
-
-
 
         public virtual ICollection<Tasks> Tasks { get; set; }
 
@@ -41,6 +37,5 @@ namespace PAM2Zaliczenie.Models
                 return hashedInputStringBuilder.ToString();
             }
         }
-        //public int Privilages{get ;set };
     }
 }
