@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace PAM2Zaliczenie.Models
+﻿namespace PAM2Zaliczenie.Models
 {
     public partial class EmployeesSkils
     {

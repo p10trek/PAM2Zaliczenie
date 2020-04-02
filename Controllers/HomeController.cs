@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PAM2Zaliczenie.BLL;
 using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Models;
 
