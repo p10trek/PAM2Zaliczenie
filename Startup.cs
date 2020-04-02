@@ -1,10 +1,13 @@
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MimeKit;
 using PAM2Zaliczenie.DAL;
+using PAM2Zaliczenie.Email;
 
 namespace PAM2Zaliczenie
 {
@@ -23,6 +26,9 @@ namespace PAM2Zaliczenie
             services.AddControllersWithViews();
             services.AddDbContext<PAM_KillersDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("PAM_KillersDB")));
+            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration")
+                .Get<EmailConfiguration>());
+            services.AddTransient<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,9 +57,9 @@ namespace PAM2Zaliczenie
                     name: "default",
                     pattern: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Home", action = "Index" });
-       // pattern: "{controller=Home}/{action=Index}/{id?}");
+                // pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-      
+
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
