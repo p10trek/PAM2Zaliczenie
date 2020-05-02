@@ -14,13 +14,13 @@
 \begin{document}
 
 	%Stron tytułowa
-	\pagenumbering{gobble}
 	\maketitle
-	\newpage
+	\thispagestyle{empty}
+	\pagenumbering{arabic} 
+	\clearpage
 
 	%Spis treści
 	\tableofcontents
-	\pagenumbering{arabic}
 	\newpage
 
 	%Początek pierwszej sekcji opisującej system
@@ -29,11 +29,15 @@
 	
 	%Sekcja druga, opis wdrożonych kwalifikacji
 	\section{Wdrożone kwalifikacje}
-		Wdrożone kwalifikacje z punkt 1.1 zasad projektu z opisem
+		
+		Do zarządzania zależnościami wykorzystaliśmy menadżer pakietów NuGet.
+		Wykorzystanie Bootstrapa zapewnia ostylowanie i RWD frontendu aplikacji „Mafia 2.0”.
+		Zastosowanie EntityFramework w połączeniu z Microsoft SQL server zapewnia łączność z zewnętrzną bazą danych z systemem mapowania relacyjno-obiektowego (ORM).
+		Dzięki zastosowaniu pakietu MailKit można z poziomu aplikacji łączyć się z serwerem pocztowym i wysyłać e-maile.
 	
 	%sekcja trzecia, opis wykorzystanych technologii
 	\section{Opis technologiczny}
-		Przy tworzeniu projektu Mafia 2.0 wykorzystano technologie:
+		Przy tworzeniu projektu Mafia 2.0 wykorzystano następujące technologie:
 
 		\subsection{C\#}
 			C\# jest obiektowym językiem programowania, zaprojektowanym w latach 1998 – 2001 dla firmy Microsoft.
@@ -72,13 +76,30 @@
 		 	Transact-SQL, który jest rozwinięciem standardu ANSI/ISO. W projekcie wykorzystano wersje 2019 Express, która jest bezpłatną edycją programu Microsoft SQL Server, oferująca
 		 	podstawowy silnik bazy danych, nieposiadający ograniczenia ilości obsługiwanych baz danych lub użytkowników. Ograniczenia, występujące w wersji Express to  m. in.:
 		 	korzystanie z jednego procesora, 1 GB pamięci RAM, 10GB plików bazy danych czy brak SQL Agent.
-	
+		
+		\subsection{MailKit}
+			MailKit jest multiplatformową otwarto źródłową biblioteką .NET klienta pocztowego opartą o MimeKit, która została zoptymalizowana pod kątem urządzeń mobilnych.\\
+			MailKit oferuje funkcjonalność:
+			\begin{itemize}
+				\item Obsługa proxy HTTP, Socks4, Socks4a i Socks5.
+				\item Uwierzytelnianie SASL.
+				\item Kompletny klient SMTP.
+				\item Kompletny klient POP3.
+				\item Kompletny klient IMAP.
+				\item Sortowanie i wątkowanie wiadomości po stronie klienta.
+				\item Asynchroniczne wersje wszystkich metod sieciowych.
+				\item Obsługa S/MIME, OpenPGP, DKIM i ARC.
+				\item Obsługa Microsoft TNEF.
+			\end{itemize}
+		\subsection{Node.js}
+			Node.js jest otwarto źródłowym, wieloplatformowym środowiskiem uruchomieniowym JavaScript, które wykonuje kod poza przeglądarką internetową. Node.js pozwala programistom pisać 					narzędzia wiersza poleceń oraz skrypty po stronie serwera, które wygenerują zawartość strony internetowej przed jej wysłaniem do przeglądarki internetowej użytkownika. Node.js 					reprezentuje paradygmat „JavaScript wszędzie”, który ujednolica tworzenie aplikacji internetowych wokół jednego języka programowania. 
+		
 	%Sekcja czwarta, instrukcja lokalnego i zdalnego uruchomienia systemu
 	\section{Instrukcja lokalnego i zdalnego uruchomienia systemu}
 		\subsection{Lokalne uruchomienie systemu}
 			Do uruchomienia Systemu zleceń mafijnych Mafia 2.0 wymagane jest następujące oprogramowanie:
 			\begin{itemize}
-				\item Microsoft SQL Server 2019 Express
+				\item Microsoft SQL Server 2019 Express Edition
 				\item SQL Server Management Studio
 			\end{itemize}
 		\subsection{Zdalne uruchomienie systemu}
