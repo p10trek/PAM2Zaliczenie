@@ -18,7 +18,7 @@ namespace PAM2Zaliczenie.Controllers
             _logger = logger;
 
             _emailService = emailService;
-
+            /*
             //ustawianie nadawcy/odbiorcy
             EmailAddress from = new EmailAddress();
             from.Name = "Nazwa nadawcy";
@@ -37,6 +37,7 @@ namespace PAM2Zaliczenie.Controllers
 
             //wysylka emaila
             emailService.Send(mail);
+            */
 
         }
 
