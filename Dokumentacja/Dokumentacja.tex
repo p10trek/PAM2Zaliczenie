@@ -31,13 +31,13 @@
 	\section{Wdrożone kwalifikacje}
 		
 		Do zarządzania zależnościami wykorzystaliśmy menadżer pakietów NuGet.
-		Wykorzystanie Bootstrapa zapewnia ostylowanie i RWD frontendu aplikacji „Mafia 2.0”.
+		Wykorzystanie Bootstrapa zapewnia ostylowanie i RWD frontendu aplikacji ,,Mafia 2.0''.
 		Zastosowanie EntityFramework w połączeniu z Microsoft SQL server zapewnia łączność z zewnętrzną bazą danych z systemem mapowania relacyjno-obiektowego (ORM).
 		Dzięki zastosowaniu pakietu MailKit można z poziomu aplikacji łączyć się z serwerem pocztowym i wysyłać e-maile.
 	
 	%sekcja trzecia, opis wykorzystanych technologii
 	\section{Opis technologiczny}
-		Przy tworzeniu projektu Mafia 2.0 wykorzystano następujące technologie:
+		Przy tworzeniu projektu ,,Mafia 2.0'' wykorzystano następujące technologie:
 
 		\subsection{C\#}
 			C\# jest obiektowym językiem programowania, zaprojektowanym w latach 1998 – 2001 dla firmy Microsoft.
@@ -92,16 +92,35 @@
 				\item Obsługa Microsoft TNEF.
 			\end{itemize}
 		\subsection{Node.js}
-			Node.js jest otwarto źródłowym, wieloplatformowym środowiskiem uruchomieniowym JavaScript, które wykonuje kod poza przeglądarką internetową. Node.js pozwala programistom pisać 					narzędzia wiersza poleceń oraz skrypty po stronie serwera, które wygenerują zawartość strony internetowej przed jej wysłaniem do przeglądarki internetowej użytkownika. Node.js 					reprezentuje paradygmat „JavaScript wszędzie”, który ujednolica tworzenie aplikacji internetowych wokół jednego języka programowania. 
+			Node.js jest otwarto źródłowym, wieloplatformowym środowiskiem uruchomieniowym JavaScript, które wykonuje kod poza przeglądarką internetową. Node.js pozwala programistom pisać 					narzędzia wiersza poleceń oraz skrypty po stronie serwera, które wygenerują zawartość strony internetowej przed jej wysłaniem do przeglądarki internetowej użytkownika. Node.js 					reprezentuje paradygmat ,,JavaScript wszędzie'', który ujednolica tworzenie aplikacji internetowych wokół jednego języka programowania. 
 		
 	%Sekcja czwarta, instrukcja lokalnego i zdalnego uruchomienia systemu
 	\section{Instrukcja lokalnego i zdalnego uruchomienia systemu}
 		\subsection{Lokalne uruchomienie systemu}
 			Do uruchomienia Systemu zleceń mafijnych Mafia 2.0 wymagane jest następujące oprogramowanie:
 			\begin{itemize}
-				\item Microsoft SQL Server 2019 Express Edition
-				\item SQL Server Management Studio
+				\item Microsoft Windows 10
+				\item ASP.NET Core Runtime 3.1.3 Hosting Bundle (Dołączony do instalatora)
+				\item Microsoft SQL Server 2019 Express Edition (Dołączony do instalatora)
+				\item SQL Server Management Studio (SSMS)
 			\end{itemize}
+			Instalacja:
+			\begin{itemize}
+				\item Ze strony projektu (https://github.com/p10trek/PAM2Zaliczenie/releases) należy pobrać plik ,,LocalSetup.exe'';
+				\item Uruchomić pobrany plik z uprawnieniami administratora;
+				\item Postępować zgodnie z wytycznymi kreatora instalacji;
+				\item Zainstalować ASP.NET Core Runtime 3.1.3 Hosting Bundle (można pominąć jeśli jest już zainstalowane);
+				\item Zainstalować Microsoft SQL Server 2019 Express Edition, wybierając wersję instalacji: "Basic" (można pominąć jeśli jest już zainstalowane);
+				\item Pobrać ze strony internetowej instalator SQL Server Management Studio (SSMS)- https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
+				\item Uruchomić pobrany plik i zainstalować SQL Server Management Studio;
+				\item Uruchomić ponownie system;
+				\item Uruchomić SQL Server Management Studio;
+				\item Przywrócić bazę danych z pliku o nazwie ,,PAM\_KillersDB.bak'' znajdującego się na lokalnym dysku ,,C:$\backslash$'';
+				\item Przejść do folderu, w którym zainstalowana jest aplikacja i edytować plik ,,appsettings.json'';
+				\item Zmienić wartości w sekcji ,,EmailConfiguration'', zgodnie z ustawieniami podanymi przez administratora serwera pocztowego;
+				\item Uruchomić ponownie system.
+			\end{itemize}
+			System zleceń mafijnych ,,Mafia 2.0'' jest gotowy do używania na lokalnym komputerze.\\\\Uwaga w zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji 				po starcie systemu operacyjnego może trwać dłużej.		
 		\subsection{Zdalne uruchomienie systemu}
 			Opis zdalnego uruchomienia systemu
 	
