@@ -8,6 +8,17 @@
 \usepackage[left=3.5cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{indentfirst} 
+\usepackage{float}
+\usepackage{hyperref}
+
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+	filecolor = magenta,
+	urlcolor = blue,
+	}
+\urlstyle{same}	
+	
 \author{Karpiński Maciej\\Radlak Piotr\\Wiecheć Sebastian\\\\\\\\\includegraphics[width=0.7\linewidth]{img/logoPWSZ.jpg}\\\\\\\\Projektowanie i programowanie systemów internetowych I}
 \title{Projekt systemu zleceń mafijnych\\Mafia 2.0}
 
@@ -104,23 +115,85 @@
 				\item Microsoft SQL Server 2019 Express Edition (Dołączony do instalatora)
 				\item SQL Server Management Studio (SSMS)
 			\end{itemize}
+			Uwaga: Cały proces instalacji należy wykonać z uprawnieniami administratora!\\
 			Instalacja:
-			\begin{itemize}
-				\item Ze strony projektu (https://github.com/p10trek/PAM2Zaliczenie/releases) należy pobrać plik ,,LocalSetup.exe'';
-				\item Uruchomić pobrany plik z uprawnieniami administratora;
+			\begin{enumerate}
+				\item \href{https://github.com/p10trek/PAM2Zaliczenie/releases}{Ze strony projektu} (\url{https://github.com/p10trek/PAM2Zaliczenie/releases}) należy pobrać plik
+						,,PAM\_Killers\_Local\_Setup.exe'';
 				\item Postępować zgodnie z wytycznymi kreatora instalacji;
+				\begin{figure}[H]
+					\includegraphics[scale=0.5]{img/Local_Install_1.png}
+					\centering
+				\end{figure}
+				\item Po ukończeniu instalacji aplikacji, kreator zaproponuje instalację wymaganych do działania składników;
+					\begin{figure}[H]
+						\includegraphics[scale=0.5]{img/Local_Install_2.png}
+						\centering
+					\end{figure}		
 				\item Zainstalować ASP.NET Core Runtime 3.1.3 Hosting Bundle (można pominąć jeśli jest już zainstalowane);
-				\item Zainstalować Microsoft SQL Server 2019 Express Edition, wybierając wersję instalacji: "Basic" (można pominąć jeśli jest już zainstalowane);
-				\item Pobrać ze strony internetowej instalator SQL Server Management Studio (SSMS)- https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms
+					\begin{figure}[H]
+						\includegraphics[scale=0.5]{img/Local_Install_3.png}
+						\centering
+					\end{figure}
+				\item Zainstalować Microsoft SQL Server 2019 Express Edition, wybierając wersję instalacji: ,,Basic'' (można pominąć jeśli jest już zainstalowane);
+					\begin{figure}[H]
+						\includegraphics[scale=0.3]{img/Local_Install_4.png}
+						\centering
+					\end{figure}
+				\item Po zakończeniu instalacji serwera SQL, można przejść do strony pobierania aplikacji SQL Server Management Studio (1. Install SSMS) albo zakończyć działanie instalatora (2. 						Close)
+					\begin{figure}[H]
+						\includegraphics[scale=0.3]{img/Local_Install_5.png}
+						\centering
+					\end{figure}				
+				\item \href{https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms}{Pobrać ze strony internetowej instalator SQL Server Management Studio (SSMS)}
+						\url{https://tiny.pl/77hn7} 
+					\begin{figure}[H]
+						\includegraphics[scale=0.3]{img/Local_Install_5.5.png}
+						\centering
+					\end{figure}				
 				\item Uruchomić pobrany plik i zainstalować SQL Server Management Studio;
-				\item Uruchomić ponownie system;
-				\item Uruchomić SQL Server Management Studio;
+					\begin{figure}[H]
+						\includegraphics[scale=0.34]{img/Local_Install_6.png}
+						\centering
+					\end{figure}
+				\item Po ukończeniu instalacji SQL Server Management Studio należy uruchomić ponownie system;
+					\begin{figure}[H]
+						\includegraphics[scale=0.4]{img/Local_Install_7.png}
+						\centering
+					\end{figure}
+				\item Z menu ,,Start'' Uruchomić Microsoft SQL Server Management Studio 18;
+					\begin{figure}[H]
+						\includegraphics[scale=0.4]{img/Local_Install_8.png}
+						\centering
+					\end{figure}		
+				\item Połączyć się z lokalną bazą danych (Pola ,,Server name'' oraz ,,User name'' mogą się różnić);
+					\begin{figure}[H]
+						\includegraphics[scale=0.4]{img/Local_Install_9.png}
+						\centering
+					\end{figure}	
+				\item Po podłączeniu do bazy danych należy rozwinąć listę składników bazy danych a następnie przy pomocy prawego przycisku myszy należy wybrać pole ,,Databases'' i wybrać 									Restore Database...''\\
+					\begin{figure}[H]
+						\includegraphics[scale=0.3]{img/Local_Install_10.png}
+						\centering
+					\end{figure}				 					
 				\item Przywrócić bazę danych z pliku o nazwie ,,PAM\_KillersDB.bak'' znajdującego się na lokalnym dysku ,,C:$\backslash$'';
-				\item Przejść do folderu, w którym zainstalowana jest aplikacja i edytować plik ,,appsettings.json'';
-				\item Zmienić wartości w sekcji ,,EmailConfiguration'', zgodnie z ustawieniami podanymi przez administratora serwera pocztowego;
+					\begin{figure}[H]
+					
+						\includegraphics[scale=0.3]{img/Local_Install_11.png}\\
+						\includegraphics[scale=0.3]{img/Local_Install_12.png}
+						\centering
+						
+					\end{figure}				
+				\item Przy pomocy aplikacji ,,Notatnik'' należy edytować plik ,,appsettings.json'' znajdujący się w głównym katalogu aplikacji (Domyślnie:
+						,,C:$\backslash$Program Files$\backslash$System zleceń mafijnych Mafia 2.0'') i zmienić wartości w sekcji ,,EmailConfiguration'', zgodnie z ustawieniami podanymi 									przez administratora serwera pocztowego;\\
+					\begin{figure}[H]
+						\includegraphics[scale=0.5]{img/Local_Install_13.png}
+						\centering
+					\end{figure}				
 				\item Uruchomić ponownie system.
-			\end{itemize}
-			System zleceń mafijnych ,,Mafia 2.0'' jest gotowy do używania na lokalnym komputerze.\\\\Uwaga w zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji 				po starcie systemu operacyjnego może trwać dłużej.		
+			\end{enumerate}
+			System zleceń mafijnych ,,Mafia 2.0'' jest gotowy do używania na lokalnym komputerze. Aby uruchomić aplikację należy użyć skrótu w menu ,,Start'' lub na Pulpicie (jeżeli została 						zaznaczona odpowiednia opcja w czasie instalacji). W zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji po starcie systemu operacyjnego
+				może trwać dłużej.		
 		\subsection{Zdalne uruchomienie systemu}
 			Opis zdalnego uruchomienia systemu
 	

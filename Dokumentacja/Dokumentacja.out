@@ -1,0 +1,14 @@
+\BOOKMARK [1][-]{section.1}{Opis funkcjonalny systemu}{}% 1
+\BOOKMARK [1][-]{section.2}{Wdrozone kwalifikacje}{}% 2
+\BOOKMARK [1][-]{section.3}{Opis technologiczny}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{C\043}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{ASP.NET Core}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Bootstrap}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Entity Framework}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{MSSQL}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.6}{MailKit}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.7}{Node.js}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Instrukcja lokalnego i zdalnego uruchomienia systemu}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Lokalne uruchomienie systemu}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Zdalne uruchomienie systemu}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Wnioski projektowe}{}% 14
