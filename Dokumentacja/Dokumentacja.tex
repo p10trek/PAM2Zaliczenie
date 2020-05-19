@@ -195,8 +195,63 @@
 			System zleceń mafijnych ,,Mafia 2.0'' jest gotowy do używania na lokalnym komputerze. Aby uruchomić aplikację należy użyć skrótu w menu ,,Start'' lub na Pulpicie (jeżeli została 						zaznaczona odpowiednia opcja w czasie instalacji). W zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji po starcie systemu operacyjnego
 				może trwać dłużej.		
 		\subsection{Zdalne uruchomienie systemu}
-			Opis zdalnego uruchomienia systemu
-	
+			Do uruchomienia Systemu zleceń mafijnych Mafia 2.0 wymagane jest następujące oprogramowanie:
+			\begin{itemize}
+				\item Linux Ubuntu 18.04 LTS 64bit.
+				\item 2GB RAM
+			\end{itemize}
+			
+			\begin{enumerate}
+					
+			\item Za pomocą polecenia:\\
+			
+			\fbox{wget -O - https://github.com/Karpfly2822/Test-VS-Repo/releases/download/1/PAM\_Linux\_Installer.sh | bash }
+			nastąpi pobranie i instalacja wszystkich wymaganaych pakietów i aplikacji systemu zleceń.\\
+			\item Po zakończeniu skryptu należy przeprowadzić konfigurację bazy danych MSSQL:	\\
+			\fbox{sudo /opt/mssql/bin/mssql-conf setup\\
+			/opt/mssql-tools/bin/sqlcmd -S localhost -U SA\\
+
+			RESTORE DATABASE PAM\_KillersDB	\\
+			FROM DISK = '/var/opt/mssql/backup/PAM\_KillersDB.bak'	\\
+			WITH MOVE 'PAM\_KillersDB' TO '/var/opt/mssql/data/PAM\_KillersDB.mdf',	\\
+			MOVE 'PAM\_KillersDB\_Log' TO '/var/opt/mssql/data/PAM\_KillersDB\_Log.ldf'	\\
+			GO \\
+			exit }\\
+
+			\item konfiguracja nginx:	\\
+			przy pomocy edytora tekstu należy otworzyć plik:	\\
+ 			\fbox{sudo vim /etc/nginx/sites-available/default}	\\\\
+
+			oraz wprowadzić następującą konfigurację:	\\
+			\fbox{
+			server \{
+    			listen        80;
+    			server\_name   example.com *.example.com;
+    			location / \{
+        		proxy\_pass         http://localhost:5000;
+        		proxy\_http\_version 1.1;
+        		proxy\_set\_header   Upgrade \$http\_upgrade;
+        		proxy\_set\_header   Connection keep-alive;
+        		proxy\_set\_header   Host \$host;
+        		proxy\_cache\_bypass \$http\_upgrade;
+        		proxy\_set\_header   X-Forwarded-For \$proxy\_add\_x\_forwarded\_for;
+        		proxy\_set\_header   X-Forwarded-Proto \$scheme;
+		    	\}
+			\}
+			}	
+			\item po zapisaniu konfiguracji nginx należy sprawdzić za pomocą polecenia poprawność konfiguracji:	\\
+			\fbox{sudo nginx -t}	\\
+			\item jeżeli test konfiguracji przeszedł pozytywnie należy przeładować ngnix z nowymi ustawieniami:	\\	
+			\fbox{sudo nginx -s reload}\\
+
+			\item przy pomocy edytora tekstu należy otworzyć plik:	\\
+			\fbox{sudo vim /var/www/PAM/appsettings.json	}\\	
+			
+			W sekcji ,,ConnectionStrings'' w polu ,,Password'' należy wprowadzić hasło do serwera bazy danych. \\
+			W sekcji ,,EmailConfiguration'' należy podać dane serwera email. \\
+			\item Po zapisaniu pliku należy zrestartować aplikację przy pomocy polecenia: \\
+			\fbox{sudo systemctl restart PAM}
+	\end{enumerate}
 	\section{Wnioski projektowe}
 		Wnioski
 \end{document}

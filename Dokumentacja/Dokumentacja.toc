@@ -12,4 +12,4 @@
 \contentsline {section}{\numberline {4}Instrukcja lokalnego i zdalnego uruchomienia systemu}{5}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Lokalne uruchomienie systemu}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Zdalne uruchomienie systemu}{11}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Wnioski projektowe}{11}{section.5}%
+\contentsline {section}{\numberline {5}Wnioski projektowe}{12}{section.5}%
