@@ -1,11 +1,11 @@
-using MailKit.Net.Smtp;
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MimeKit;
 using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Email;
 
@@ -45,7 +45,28 @@ namespace PAM2Zaliczenie
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            // cache
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse =
+                    r =>
+                    {
+                        string path = r.File.PhysicalPath;
+                        if (path.EndsWith(".css") || path.EndsWith(".js") || path.EndsWith(".gif") || path.EndsWith(".jpg") || path.EndsWith(".png") || path.EndsWith(".svg"))
+                        {
+                            TimeSpan maxAge = new TimeSpan(365, 0, 0, 0);
+                            r.Context.Response.Headers.Append("Cache-Control", "max-age=" + maxAge.TotalSeconds.ToString("0"));
+                        }
+                        else
+                        {
+                            r.Context.Response.Headers.Append("Cache-Control", "no-cache");
+                            r.Context.Response.Headers.Append("Cache-Control", "private, no-store");
+
+                        }
+                    }
+
+            });
 
             app.UseRouting();
 
