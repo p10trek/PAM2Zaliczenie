@@ -1,15 +1,18 @@
 \babel@toc {polish}{}
 \contentsline {section}{\numberline {1}Opis funkcjonalny systemu}{3}{section.1}%
-\contentsline {section}{\numberline {2}Wdrożone kwalifikacje}{3}{section.2}%
-\contentsline {section}{\numberline {3}Opis technologiczny}{3}{section.3}%
-\contentsline {subsection}{\numberline {3.1}C\#}{3}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}ASP.NET Core}{3}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Bootstrap}{4}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Entity Framework}{4}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}MSSQL}{4}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}MailKit}{4}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Node.js}{5}{subsection.3.7}%
-\contentsline {section}{\numberline {4}Instrukcja lokalnego i zdalnego uruchomienia systemu}{5}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Lokalne uruchomienie systemu}{5}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Zdalne uruchomienie systemu}{11}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Wnioski projektowe}{12}{section.5}%
+\contentsline {section}{\numberline {2}Wdrożone kwalifikacje}{4}{section.2}%
+\contentsline {section}{\numberline {3}Opis technologiczny}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}C\#}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}ASP.NET Core 3.1}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Bootstrap}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Entity Framework}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Microsoft SQL Server}{6}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}MailKit}{6}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Node.js}{6}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}NuGet}{7}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Grunt}{7}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}NGINX}{7}{subsection.3.10}%
+\contentsline {section}{\numberline {4}Instrukcja lokalnego i zdalnego uruchomienia systemu}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Lokalne uruchomienie systemu}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Zdalne uruchomienie systemu}{13}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Wnioski projektowe}{16}{section.5}%
