@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amssymb}
 \usepackage[polish]{babel}
+\usepackage{polski}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage[left=3.5cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
@@ -22,8 +23,8 @@
 	}
 \urlstyle{same}	
 	
-\author{Karpiński Maciej\\Radlak Piotr\\Wiecheć Sebastian\\\\\\\\\includegraphics[width=0.7\linewidth]{img/logoPWSZ.jpg}\\\\\\\\Projektowanie i programowanie systemów internetowych I}
-\title{Projekt systemu zleceń mafijnych\\Mafia 2.0}
+\author{Karpiński Maciej\\Radlak Piotr\\Wiecheć Sebastian\\\\\\\\\includegraphics[width=0.7\linewidth]{img/logoPWSZ.eps}\\\\\\\\Projektowanie i programowanie systemów internetowych I}
+\title{Projekt systemu zleceń mafijnych\\,,Mafia 2.0''}
 
 \begin{document}
 
@@ -39,18 +40,34 @@
 
 	%Początek pierwszej sekcji opisującej system
 	\section{Opis funkcjonalny systemu}
-		\indent System zleceń mafijnych ,,Mafia 2.0'' jest platformą pozwalającą użytkownikowi na składanie zleceń przestępstw.
+		\indent System zleceń mafijnych ,,Mafia 2.0'' jest aplikacją internetową pozwalającą zarejestrowanemu i zalogowanemu użytkownikowi na przeglądanie i składanie zleceń,
+		wykonywanych przez zorganizowane grupy przestępcze. Funkcjonalność aplikacji obejmuje:
+		\begin{itemize}
+			\item dostęp do aplikacji poprzez przeglądarkę www (PC, smartphone),
+			\item rejestrację i logowanie użytkowników,
+			\item przeglądanie oferty zleceń,
+			\item wysłania e-maila do użytkownika z potwierdzeniem rejestracji/zlecenia,
+			\item wyświetlenie aktualnego kursu Franka Szwajcarskiego (CHF),
+			\item Polską i Angielską lokalizacje;
+		\end{itemize}
 	\newpage
 
 	%Sekcja druga, opis wdrożonych kwalifikacji
 	\section{Wdrożone kwalifikacje}	
 		\indent Aplikacja została stworzona na bazie frameworku aplikacji webowych ASP .NET Core i~opartej na wzorcu Model-View-Controller(MVC), posiada wbudowany router oraz wykorzystuje
-		silnik Razer do dynamicznego generowania wysyłanych plików HTML. Do zarządzania zależnościami w projekcie wykorzystaliśmy menadżer pakietów NuGet. Wykorzystanie w projekcie
-		Bootstrapa zapewnia ostylowanie	i RWD frontendu aplikacji webowej ,,Mafia 2.0''. Do łączności z zewnętrzną bazą danych Microsoft SQL Server, został wykorzystany EntityFramework,
-		który zapewnia system mapowania relacyjno-obiektowego (ORM). Poprzez zastosowaniu pakietu MailKit można z poziomu aplikacji łączyć się z serwerem pocztowym i wysyłać e-maile.
+		silnik Razer do dynamicznego generowania wysyłanych plików HTML.
+		Do zarządzania zależnościami w projekcie wykorzystaliśmy menadżer pakietów NuGet.
+		Wykorzystanie w projekcie Bootstrapa zapewnia ostylowanie i RWD frontendu aplikacji internetowej ,,Mafia 2.0''.
+		Użytkownik przy pomocy formularzy posiada możliwość rejestracji, logowania i przesyłania innych danych do aplikacji.
+		Do komunikacji z zewnętrzną bazą danych Microsoft SQL Server, został wykorzystany EntityFramework, który zapewnia system mapowania relacyjno-obiektowego (ORM)
+		oraz umożliwia dodawanie, usuwanie i~edycję rekordów w~bazie danych.
+		Poprzez zastosowaniu pakietu MailKit można z poziomu aplikacji łączyć się z serwerem pocztowym i wysyłać e-maile.
+		System zleceń mafijnych ,,Mafia 2.0'' wykorzystuje zewnętrzne API w celu pobrania aktualnego kursu Franka Szwajcarskiego, dodatkowo aplikacji wystawia API z danymi
+		dotyczącymi wykonywanych zleceń.
+		Każda akcja wykonująca działanie na bazie danych jest zapisywana.
 		W ramach optymalizacji SEO została uruchomiona kompresja gzip na reverse proxy NGINX dodatkowo dzięki użyciu pakietu Grunt zautomatyzowano mimifikację JavaScript i CSS.
 		Wszystkie statyczne pliki (.css, .js, .png, .jpg, .gif, .svg) mają ustawiony cache na 365 dni oraz dodatkowo wystawiają wersję kontrolną, dzięki czemu w~przypadku zmiany na serwerze
-		przeglądarka może pobrać nową wersję pliku przed upływem określonego czasu.
+		przeglądarka może pobrać nową wersję pliku przed upływem określonego czasu. Aplikacja jest zlokalizowana w języku polskim i~angielskim.
 	\newpage
 
 	%sekcja trzecia, opis wykorzystanych technologii
@@ -94,20 +111,20 @@
 		 	\indent Microsoft SQL Server jest systemem zarządzania relacyjnymi bazami danych opracowany przez firmę Microsoft. Cechą charakterystyczną jest głównie wykorzystywanie języka
 		 	zapytań	Transact-SQL, który jest rozwinięciem standardu ANSI/ISO. W projekcie wykorzystano wersje 2019 Express, która jest bezpłatną edycją programu Microsoft SQL Server, oferująca
 		 	podstawowy silnik bazy danych, nieposiadający ograniczenia ilości obsługiwanych baz lub użytkowników. Ograniczenia, występujące w wersji Express to  m.in.:
-		 	korzystanie z jednego procesora, 1 GB pamięci RAM, 10GB plików bazy danych czy brak SQL Agent.
+		 	korzystanie z~jednego procesora, 1 GB pamięci RAM, 10GB plików bazy danych czy brak SQL Agent.
 		
 		\subsection{MailKit}
 			\indent MailKit jest multiplatformową otwarto źródłową biblioteką .NET klienta pocztowego opartą o MimeKit, która została zoptymalizowana pod kątem urządzeń mobilnych.
 			MailKit oferuje następującą funkcjonalność:
 			\begin{itemize}
-				\item Obsługa proxy HTTP, Socks4, Socks4a i Socks5.
-				\item Uwierzytelnianie SASL.
-				\item Kompletny klient SMTP.
-				\item Kompletny klient POP3.
-				\item Kompletny klient IMAP.
-				\item Sortowanie i wątkowanie wiadomości po stronie klienta.
-				\item Asynchroniczne wersje wszystkich metod sieciowych.
-				\item Obsługa S/MIME, OpenPGP, DKIM i ARC.
+				\item Obsługa proxy HTTP, Socks4, Socks4a i Socks5;
+				\item Uwierzytelnianie SASL;
+				\item Kompletny klient SMTP;
+				\item Kompletny klient POP3;
+				\item Kompletny klient IMAP;
+				\item Sortowanie i wątkowanie wiadomości po stronie klienta;
+				\item Asynchroniczne wersje wszystkich metod sieciowych;
+				\item Obsługa S/MIME, OpenPGP, DKIM i ARC;
 				\item Obsługa Microsoft TNEF.
 			\end{itemize}
 		\subsection{Node.js}
@@ -144,91 +161,93 @@
 						\url{https://github.com/p10trek/PAM2Zaliczenie/releases}
 					\end{tcolorbox}
 					
-				\item Postępować zgodnie z wytycznymi kreatora instalacji;
-				\begin{figure}[H]
-					\centering
-					\includegraphics[scale=0.5]{img/Local_Install_1.png}
-
-				\end{figure}
-				
-				\item Po ukończeniu instalacji aplikacji, kreator zaproponuje instalację wymaganych do działania składników;
+				\item Postępować zgodnie z wytycznymi kreatora instalacji,
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.5]{img/Local_Install_2.png}
+						\includegraphics[width=8cm]{img/Local_Install_1.eps}
+					\end{figure}
+
+
+				%\end{figure}
+				
+				\item Po ukończeniu instalacji aplikacji, kreator zaproponuje instalację wymaganych do działania składników,
+					\begin{figure}[H]
+						\centering
+						\includegraphics[width=8cm]{img/Local_Install_2.eps}
 					\end{figure}		
 					
-				\item Zainstalować ASP.NET Core Runtime 3.1.3 Hosting Bundle (można pominąć jeśli jest już zainstalowane);
+				\item Zainstalować ASP.NET Core Runtime 3.1.3 Hosting Bundle (można pominąć jeśli jest już zainstalowane),
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.5]{img/Local_Install_3.png}
+						\includegraphics[width=8cm]{img/Local_Install_3.eps}
 					\end{figure}
 					
-				\item Zainstalować Microsoft SQL Server 2019 Express Edition, wybierając wersję instalacji: ,,Basic'' (można pominąć jeśli jest już zainstalowane);
+				\item Zainstalować Microsoft SQL Server 2019 Express Edition, wybierając wersję instalacji: ,,Basic'' (można pominąć jeśli jest już zainstalowane),
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.3]{img/Local_Install_4.png}
+						\includegraphics[width=8cm]{img/Local_Install_4.eps}
 					\end{figure}
 					
 				\item Po zakończeniu instalacji serwera SQL, można przejść do strony pobierania aplikacji SQL Server Management Studio (1. Install SSMS) albo zakończyć działanie
 					instalatora (2. Close)
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.3]{img/Local_Install_5.png}
+						\includegraphics[width=8cm]{img/Local_Install_5.eps}
 					\end{figure}		
 							
-				\item Pobrać ze strony internetowej instalator SQL Server Management Studio (SSMS)
+				\item Pobrać ze strony internetowej instalator SQL Server Management Studio (SSMS),
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 						\url{https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms}
 					\end{tcolorbox}
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.3]{img/Local_Install_5.5.png}
+						\includegraphics[width=8cm]{img/Local_Install_5.5.eps}
 					\end{figure}
 									
-				\item Uruchomić pobrany plik i zainstalować SQL Server Management Studio;
+				\item Uruchomić pobrany plik i zainstalować SQL Server Management Studio,
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.34]{img/Local_Install_6.png}
+						\includegraphics[width=8cm]{img/Local_Install_6.eps}
 					\end{figure}
 					
-				\item Po ukończeniu instalacji SQL Server Management Studio należy uruchomić ponownie system;
+				\item Po ukończeniu instalacji SQL Server Management Studio należy uruchomić ponownie system,
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.4]{img/Local_Install_7.png}
+						\includegraphics[width=8cm]{img/Local_Install_7.eps}
 					\end{figure}
 					
-				\item Z menu ,,Start'' Uruchomić Microsoft SQL Server Management Studio 18;
+				\item Z menu ,,Start'' Uruchomić Microsoft SQL Server Management Studio 18,
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.4]{img/Local_Install_8.png}
+						\includegraphics[width=8cm]{img/Local_Install_8.eps}
 					\end{figure}
 							
-				\item Połączyć się z lokalną bazą danych;
+				\item Połączyć się z lokalną bazą danych,~
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.4]{img/Local_Install_9.png}
+						\includegraphics[width=8cm]{img/Local_Install_9.eps}
 					\end{figure}
 						
 				\item Po podłączeniu do bazy danych należy rozwinąć listę składników bazy danych a następnie przy pomocy prawego przycisku myszy należy wybrać pole ,,Databases'' i wybrać
-					Restore Database...''\\
+					Restore Database...''
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.3]{img/Local_Install_10.png}
+						\includegraphics[width=8cm]{img/Local_Install_10.eps}
 					\end{figure}
 									 					
-				\item Przywrócić bazę danych z pliku o nazwie ,,PAM\_KillersDB.bak'' znajdującego się na lokalnym dysku ,,C:$\backslash$'';
+				\item Przywrócić bazę danych z pliku o nazwie ,,PAM\_KillersDB.bak'' znajdującego się na lokalnym dysku ,,C:$\backslash$'',
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.3]{img/Local_Install_11.png}\\
-						\includegraphics[scale=0.3]{img/Local_Install_12.png}
+						\includegraphics[width=8cm]{img/Local_Install_11.eps}\\
+						\includegraphics[width=8cm]{img/Local_Install_12.eps}
 					\end{figure}
 									
 				\item Przy pomocy aplikacji ,,Notatnik'' należy edytować plik ,,appsettings.json'' znajdujący się w głównym katalogu aplikacji (Domyślnie:
 					,,C:$\backslash$Program Files$\backslash$System zleceń mafijnych Mafia 2.0'') i zmienić wartości w sekcji ,,EmailConfiguration'', zgodnie z ustawieniami podanymi
-					przez administratora serwera pocztowego;\\
+					przez administratora serwera pocztowego,
 					\begin{figure}[H]
 						\centering
-						\includegraphics[scale=0.5]{img/Local_Install_13.png}
+						\includegraphics[width=8cm]{img/Local_Install_13.eps}
 					\end{figure}				
 					
 				\item Uruchomić ponownie system.
@@ -238,7 +257,7 @@
 			\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 				\url {http://localhost:5000}
 			\end{tcolorbox}
-			W zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji po starcie systemu operacyjnego może trwać dłużej.		
+			\noindent W zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji po starcie systemu operacyjnego może trwać dłużej.		
 		
 		\subsection{Zdalne uruchomienie systemu}
 			\indent Do uruchomienia Systemu zleceń mafijnych Mafia 2.0 wymagane jest następujące oprogramowanie:
@@ -263,7 +282,9 @@
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]			
 						sudo /opt/mssql/bin/mssql-conf setup
 					\end{tcolorbox}
-					Gdzie należy podać hasło, wybrać typ instalacji (3 Express) i język użytkownika. Po ukończeniu konfiguracji należy połączyć się z bazą danych i przywrócić bazę z pliku
+					Gdzie należy podać hasło, wybrać typ instalacji (3 Express) i język użytkownika.
+					
+				\item Po zakończeniu konfiguracji należy połączyć się z serwerem bazy danych i przywrócić bazę z pliku
 					PAM\_KillersDB.bak znajdującego się w ,,/var/opt/mssql/backup/''.	
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]			
 						/opt/mssql-tools/bin/sqlcmd -S localhost -U SA \\
@@ -276,11 +297,11 @@
 					\end{tcolorbox}				
 			
 				\item Konfiguracja NGINX:
-					przy pomocy edytora tekstu należy otworzyć plik:	\\
+					przy pomocy edytora tekstu należy otworzyć plik:
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 						sudo vim /etc/nginx/sites-available/default
 					\end{tcolorbox}	
-					oraz zastąpić domyślną konfigurację następującą:	\\
+					oraz zastąpić domyślną konfigurację następującą:
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 						\begin{tabbing}
 							ser\= ver \{\\
@@ -317,17 +338,21 @@
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 						sudo vim /var/www/PAM/appsettings.json
 					\end{tcolorbox}						
-					W sekcji ,,ConnectionStrings'' pole ,,Server='' można zmienić adres ip serwera SQL (domyślnie jest to localhost). Pole ,,User Id=' można zmienić nazwę użytkownika bazy
-					danych (domyslnie użytkownik SA). W polu ,,Password='' należy wprowadzić hasło do serwera bazy danych. W sekcji ,,EmailConfiguration'' należy podać dane serwera email.
-				\item Po zapisaniu pliku należy zrestartować aplikację przy pomocy polecenia: \\
+					W polu ,,Password='' należy wprowadzić hasło do serwera bazy danych, następnie w~sekcji ,,EmailConfiguration'' należy podać dane serwera e-mail.
+				\item Po zapisaniu pliku należy zrestartować aplikację przy pomocy polecenia:
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 						sudo systemctl restart PAM
 					\end{tcolorbox}
-				\item Aby aplikacja była dostępna poprzez sieć internet należy otworzyć port 80 (wartość ,,listen	80'' w konfiguracji NGINX).
-				\item Od tej chwili aplikacja będzie dostępna z dowolnej przeglądarki internetowej. 
+				\item Aby aplikacja była dostępna poprzez sieć internet należy przekierować port 80 w konfiguracji routera (wartość ,,listen 80'' w konfiguracji NGINX).
+				\item Od tej chwili aplikacja będzie dostępna z dowolnej przeglądarki internetowej, poprzez udanie się pod adres ip lub domenę serwera. 
 			\end{enumerate}
 	\newpage
 	
 	\section{Wnioski projektowe}
-		\indent Wnioski
+		\indent Tworzenie aplikacji internetowej systemu zleceń mafijnych ,,Mafia 2.0'' było bardzo ciekawym doświadczaniem, w którym zdobyliśmy wiele praktycznej wiedzy jak w poprawny sposób
+		stworzyć profesjonalną aplikację internetową począwszy od wyboru wykorzystywanej technologi, poprzez projekt frontendu i funkcjonalności backendu oraz napisanie dokumentacji
+		w \LaTeX \space	- co jak się okazało nie było takie trudne jak na pierwszy rzut oka mogło by się wydawać. Wdrożenie aplikacji internetowej opartej o framework
+		ASP.NET Core 3.1 okazało się o wiele prostsze na systemie Linux przy wykorzystaniu reverse proxy NGINX, niż w~systemie Windows Server przy użyciu IIS.
+		Praca w grupie wykazała że każdy z nas posiada inny zestaw umiejętności i wiedzy dzięki czemu w naturalny sposób wytworzył się podział prac przy projekcie,
+		jednocześnie gdy napotykany był jakiś problem to różnice w~posiadanej wiedzy pozwalały na wspólne szybkie rozwiązanie problemu. 		
 \end{document}

@@ -13,7 +13,6 @@ Do zaimplementowania:
 [] Logger, logowanie akcji w aplikacji
 
 Czêœciowo zaimplementowane:
-[/] SEO, wprowadzenie optymalizacji dla wyszukiwarek - w³¹czono kompresjê gzip na serwerze NGINX
 [/] Mail, wysy³anie emaili z systemu - Potwierdzenie z³o¿enia zlecenia - backend przy pomocy MailKit
 
 Zaimplementowane:
@@ -27,3 +26,4 @@ Zaimplementowane:
 [X] RWD, poprawne wyœwietlanie frontendu na ró¿nych urz¹dzeniach - Bootstrap
 [X] Automatyzacja, na przyk³ad wykorzystanie Sass albo minifikowanie JS - minifikacja css i js przy pomocy pakietu Grunt
 [X] Cache, np. wyszukiwarka wykorzystuj¹ca system pamiêci podrêcznej - cache statycznych plików z kontrol¹ wersji
+[X] SEO, wprowadzenie optymalizacji dla wyszukiwarek - w³¹czono kompresjê gzip na serwerze NGINX
