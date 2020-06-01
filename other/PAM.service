@@ -1,0 +1,9 @@
+[Unit]
+Description=System zleceń mafijnych - Mafia 2.0
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /var/www/PAM/run.sh
+
+[Install]
+WantedBy=multi-user.target
