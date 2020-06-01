@@ -29,6 +29,13 @@ namespace PAM2Zaliczenie
             services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration")
                 .Get<EmailConfiguration>());
             services.AddTransient<IEmailService, EmailService>();
+
+            services.AddAuthentication("CookieAuthentication")
+                .AddCookie("CookieAuthentication", config =>
+                {
+                    config.Cookie.Name = "UserLoginCookie";
+                    config.LoginPath = "/Login/UserLogin";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +76,7 @@ namespace PAM2Zaliczenie
             });
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
