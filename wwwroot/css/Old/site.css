@@ -2,6 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
+    color:white;
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -28,13 +29,18 @@ a {
 -------------------------------------------------- */
 html {
   font-size: 14px;
+  color:white
 }
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
-
+.label {
+    color: white;
+    padding: 8px;
+    font-family: Arial;
+}
 .border-top {
   border-top: 1px solid #e5e5e5;
 }

@@ -13,7 +13,7 @@
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow">
                 <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PAM2Zaliczenie</a>
+                    <a class="PAM-logo" asp-area="" asp-controller="Home" asp-action="Index">PAM2Zaliczenie</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -46,9 +46,11 @@
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
+            </main>
+            <img class="bg-image" asp-append-version="true" alt="Alternate Text" />
         </div>
-        <img class="main-background" src="~/css/d.jpg" asp-append-version="true" alt="Alternate Text" />
-        </main>
+     
+    
     </div>
 
     <footer class="border-top footer text-muted">

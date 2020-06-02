@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Employees/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid id)
         {
             if (id == null)
             {
@@ -43,6 +44,7 @@ namespace PAM2Zaliczenie.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
+            ViewData["Positions"] = _context.Employee.Select(row => row.Position).ToList();
             return View();
         }
 
@@ -55,6 +57,8 @@ namespace PAM2Zaliczenie.Controllers
         {
             if (ModelState.IsValid)
             {
+                employee.Id = Guid.NewGuid();
+                employee.IsEmployed = true;
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -63,7 +67,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Employees/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
             {
@@ -83,7 +87,7 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Surname,Position,IsEmployed")] Employee employee)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Surname,Position,IsEmployed")] Employee employee)
         {
             if (id != employee.Id)
             {
@@ -114,7 +118,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Employees/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             if (id == null)
             {
@@ -134,7 +138,7 @@ namespace PAM2Zaliczenie.Controllers
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var employee = await _context.Employee.FindAsync(id);
             _context.Employee.Remove(employee);
@@ -142,7 +146,7 @@ namespace PAM2Zaliczenie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(int id)
+        private bool EmployeeExists(Guid id)
         {
             return _context.Employee.Any(e => e.Id == id);
         }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,7 +26,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Tasks/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid id)
         {
             if (id == null)
             {
@@ -49,7 +50,7 @@ namespace PAM2Zaliczenie.Controllers
         public IActionResult Create()
         {
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name");
-            ViewData["TaskTypeId"] = new SelectList(_context.TaskType, "Id", "Comment");
+            ViewData["Name"] = new SelectList(_context.TaskType, "Id", "Comment");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Login");
             return View();
         }
@@ -68,13 +69,13 @@ namespace PAM2Zaliczenie.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name", tasks.EmployeeId);
-            ViewData["TaskTypeId"] = new SelectList(_context.TaskType, "Id", "Comment", tasks.TaskTypeId);
+            ViewData["TaskTypeId"] = new SelectList(_context.TaskType, "Id", "Name", tasks.TaskTypeId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Login", tasks.UserId);
             return View(tasks);
         }
 
         // GET: Tasks/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
             {
@@ -97,7 +98,7 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TaskTypeId,EmployeeId,UserId,IsReady,StartTime")] Tasks tasks)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,TaskTypeId,EmployeeId,UserId,IsReady,StartTime")] Tasks tasks)
         {
             if (id != tasks.Id)
             {
@@ -131,7 +132,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Tasks/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             if (id == null)
             {
@@ -154,7 +155,7 @@ namespace PAM2Zaliczenie.Controllers
         // POST: Tasks/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var tasks = await _context.Tasks.FindAsync(id);
             _context.Tasks.Remove(tasks);
@@ -162,7 +163,7 @@ namespace PAM2Zaliczenie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TasksExists(int id)
+        private bool TasksExists(Guid id)
         {
             return _context.Tasks.Any(e => e.Id == id);
         }

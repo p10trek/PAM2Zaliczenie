@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Users/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid id)
         {
             if (id == null)
             {
@@ -63,7 +64,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Users/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
             if (id == null)
             {
@@ -83,7 +84,7 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,emailAddress,UserAccessLevel,Password")] Users users)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Login,emailAddress,UserAccessLevel,Password")] Users users)
         {
             if (id != users.Id)
             {
@@ -114,7 +115,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             if (id == null)
             {
@@ -134,7 +135,7 @@ namespace PAM2Zaliczenie.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var users = await _context.Users.FindAsync(id);
             _context.Users.Remove(users);
@@ -142,7 +143,7 @@ namespace PAM2Zaliczenie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsersExists(int id)
+        private bool UsersExists(Guid id)
         {
             return _context.Users.Any(e => e.Id == id);
         }
