@@ -52,10 +52,11 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,emailAddress,UserAccessLevel,Password")] Users users)
+        public async Task<IActionResult> Create([Bind("Id,Login,EmailAddress,UserAccessLevel,Password")] Users users)
         {
             if (ModelState.IsValid)
             {
+                users.Id = Guid.NewGuid();
                 _context.Add(users);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -84,7 +85,7 @@ namespace PAM2Zaliczenie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Login,emailAddress,UserAccessLevel,Password")] Users users)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Login,EmailAddress,UserAccessLevel,Password")] Users users)
         {
             if (id != users.Id)
             {

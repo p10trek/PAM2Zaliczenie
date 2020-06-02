@@ -92,7 +92,7 @@ namespace PAM2Zaliczenie.DAL
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
+                    
                 entity.Property(e => e.Password).IsRequired();
                 entity.Property(e => e.EmailAddress).IsRequired();
                 entity.Property(e => e.UserAccessLevel).IsRequired();
