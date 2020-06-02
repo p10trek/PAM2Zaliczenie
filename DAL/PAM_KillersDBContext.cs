@@ -94,7 +94,7 @@ namespace PAM2Zaliczenie.DAL
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password).IsRequired();
-                entity.Property(e => e.emailAddress).IsRequired();
+                entity.Property(e => e.EmailAddress).IsRequired();
                 entity.Property(e => e.UserAccessLevel).IsRequired();
             });
 

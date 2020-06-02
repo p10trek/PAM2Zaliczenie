@@ -12,7 +12,7 @@ namespace PAM2Zaliczenie.Controllers
 {
     public class LoginController : Controller
     {
-
+        
         private readonly PAM_KillersDBContext _context;
 
         public LoginController(PAM_KillersDBContext context)
@@ -39,7 +39,7 @@ namespace PAM2Zaliczenie.Controllers
                 Debug.WriteLine(currentUser.Id);
                 Debug.WriteLine(currentUser.Login);
                 Debug.WriteLine(currentUser.Password);
-                Debug.WriteLine(currentUser.emailAddress);
+                Debug.WriteLine(currentUser.EmailAddress);
                 Debug.WriteLine(currentUser.UserAccessLevel);
                 var userClaims = new List<Claim>()
                 {
@@ -47,19 +47,20 @@ namespace PAM2Zaliczenie.Controllers
                     new Claim(ClaimTypes.Name, currentUser.Login),
                     new Claim(ClaimTypes.Email, "zleceniamafia2.0@wp.pl"),
               };
+                userClaims.Add(new Claim(ClaimTypes.Role, currentUser.UserAccessLevel.ToString()));
                 //dodaje wpis do ciasteczka o poziomie dostępu
-                if (currentUser.UserAccessLevel == 0)
-                {
-                    userClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
-                }
-                if (currentUser.UserAccessLevel == 1)
-                {
-                    userClaims.Add(new Claim(ClaimTypes.Role, "Employee"));
-                }
-                if (currentUser.UserAccessLevel == 2)
-                {
-                    userClaims.Add(new Claim(ClaimTypes.Role, "User"));
-                }
+                //if (currentUser.UserAccessLevel == 0)
+                //{
+                //    userClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                //}
+                //if (currentUser.UserAccessLevel == 1)
+                //{
+                //    userClaims.Add(new Claim(ClaimTypes.Role, "Employee"));
+                //}
+                //if (currentUser.UserAccessLevel == 2)
+                //{
+                //    userClaims.Add(new Claim(ClaimTypes.Role, "User"));
+                //}
 
                 var grandmaIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 
