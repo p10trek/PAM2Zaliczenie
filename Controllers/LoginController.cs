@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -31,22 +31,39 @@ namespace PAM2Zaliczenie.Controllers
         {
 
             var users = _context.Users.ToList();
-            var allUsers = users.FirstOrDefault();
-            //tworzy ciasteczko logowania w roli admina
-            if (users.Any(u => u.Login == user.Login))
+
+            //tworzy ciasteczko logowania i jego role
+            Users currentUser = _context.Users.FirstOrDefault(u => u.Login == user.Login);
+            if (currentUser != null)
             {
+                Debug.WriteLine(currentUser.Id);
+                Debug.WriteLine(currentUser.Login);
+                Debug.WriteLine(currentUser.Password);
+                Debug.WriteLine(currentUser.emailAddress);
+                Debug.WriteLine(currentUser.UserAccessLevel);
                 var userClaims = new List<Claim>()
                 {
                     //dodaje wpisy do ciasteczka
-                    new Claim(ClaimTypes.Name, user.Login),
+                    new Claim(ClaimTypes.Name, currentUser.Login),
                     new Claim(ClaimTypes.Email, "zleceniamafia2.0@wp.pl"),
-                    new Claim(ClaimTypes.Role, "Admin")
-                };
+              };
+                //dodaje wpis do ciasteczka o poziomie dostępu
+                if (currentUser.UserAccessLevel == 0)
+                {
+                    userClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                }
+                if (currentUser.UserAccessLevel == 1)
+                {
+                    userClaims.Add(new Claim(ClaimTypes.Role, "Employee"));
+                }
+                if (currentUser.UserAccessLevel == 2)
+                {
+                    userClaims.Add(new Claim(ClaimTypes.Role, "User"));
+                }
 
                 var grandmaIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
-                //HttpContext.SignInAsync(userPrincipal);
                 var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
 
                 return RedirectToAction("Index", "Home");
