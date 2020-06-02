@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PAM2Zaliczenie.DAL;
@@ -16,7 +16,6 @@ namespace PAM2Zaliczenie.Controllers
         public HomeController(ILogger<HomeController> logger, IEmailService emailService)
         {
             _logger = logger;
-
             _emailService = emailService;
             /*
             //ustawianie nadawcy/odbiorcy
@@ -47,6 +46,7 @@ namespace PAM2Zaliczenie.Controllers
             return View();
         }
 
+        //[Authorize(Roles ="Admin, User")] jeżeli wymaga logowania 
         public IActionResult Privacy()
         {
             return View();
