@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,12 +26,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
-                            </li>
+                            <!--Tylko admin widzi listę użytkowników-->
+                            @if (@User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == "0")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
+                                </li>
+                            }
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Tasks" asp-action="Index">Tasks</a>
                             </li>
@@ -40,13 +42,31 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="TaskType" asp-action="Index">TaskType</a>
                             </li>
+                            <!--Sprawdza czy zalogowany-->
+                            @if (@User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == null)
+                            {
+                                <!--Wyświetla odnośniki do rejestracji-->
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Create">Register</a>
+                                </li>
+                                <!--Wyświetla odnośniki do logowania-->
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Login" asp-action="UserLogin">Login</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <!--Wyświetla odnośniki do edycji aktualnie zalogowanego użytkownika-->
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Edit" asp-route-id="">@User.Identity.Name</a>
+                                </li>
+                                <!--Wyświetla odnośnik do wylogowania-->
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                                </li>
+                            }}
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Login" asp-action="UserLogin">Login</a>
-                            </li>
-                            <li class="nav-item">
-
-                                <!--Role @User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value-->
-                                <a class="nav-link text-white" asp-controller="Login" asp-area="" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         </ul>
                     </div>

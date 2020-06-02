@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PAM2Zaliczenie.DAL;
@@ -18,6 +19,7 @@ namespace PAM2Zaliczenie.Controllers
         }
 
         // GET: Users
+        [Authorize(Roles = "0")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users.ToListAsync());
@@ -54,6 +56,7 @@ namespace PAM2Zaliczenie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Login,EmailAddress,UserAccessLevel,Password")] Users users)
         {
+            users.UserAccessLevel = 2;
             if (ModelState.IsValid)
             {
                 users.Id = Guid.NewGuid();
