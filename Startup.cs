@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,12 +31,8 @@ namespace PAM2Zaliczenie
                 .Get<EmailConfiguration>());
             services.AddTransient<IEmailService, EmailService>();
 
-            services.AddAuthentication("CookieAuthentication")
-                .AddCookie("CookieAuthentication", config =>
-                {
-                    config.Cookie.Name = "UserLoginCookie";
-                    config.LoginPath = "/Login/UserLogin";
-                });
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +73,7 @@ namespace PAM2Zaliczenie
             });
 
             app.UseRouting();
+            app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
 

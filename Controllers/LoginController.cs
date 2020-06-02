@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Models;
@@ -30,22 +32,34 @@ namespace PAM2Zaliczenie.Controllers
 
             var users = _context.Users.ToList();
             var allUsers = users.FirstOrDefault();
+            //tworzy ciasteczko logowania w roli admina
             if (users.Any(u => u.Login == user.Login))
             {
                 var userClaims = new List<Claim>()
-                {   //dodaje wpisy do ciasteczka
+                {
+                    //dodaje wpisy do ciasteczka
                     new Claim(ClaimTypes.Name, user.Login),
                     new Claim(ClaimTypes.Email, "zleceniamafia2.0@wp.pl"),
+                    new Claim(ClaimTypes.Role, "Admin")
                 };
 
-                var grandmaIdentity = new ClaimsIdentity(userClaims, "User Identity");
+                var grandmaIdentity = new ClaimsIdentity(userClaims, CookieAuthenticationDefaults.AuthenticationScheme);
 
                 var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
-                HttpContext.SignInAsync(userPrincipal);
+                //HttpContext.SignInAsync(userPrincipal);
+                var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, userPrincipal);
 
                 return RedirectToAction("Index", "Home");
             }
+
             return View(user);
+        }
+
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            var login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

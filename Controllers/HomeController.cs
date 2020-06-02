@@ -46,8 +46,7 @@ namespace PAM2Zaliczenie.Controllers
             return View();
         }
 
-        // add [Authorize] to check if login is requiered
-        [Authorize]
+        //[Authorize(Roles ="Admin, User")] jeżeli wymaga logowania 
         public IActionResult Privacy()
         {
             return View();
@@ -58,7 +57,5 @@ namespace PAM2Zaliczenie.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
     }
 }
