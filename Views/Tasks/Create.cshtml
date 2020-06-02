@@ -1,9 +1,11 @@
-﻿@model PAM2Zaliczenie.Models.Tasks
+﻿@using PAM2Zaliczenie.BLL
+@model PAM2Zaliczenie.Models.Tasks
+
 
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    //todo: formatka obsługi zlecenia 
+    //todo: formatka obsługi zlecenia
     //@Model.Employee.Name
 }
 
@@ -17,25 +19,13 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TaskTypeId" class="control-label"></label>
-                <select asp-for="TaskTypeId" class="form-control" asp-items="ViewBag.TaskType"></select>
+                <select asp-for="TaskTypeId" class="form-control" asp-items="ViewBag.TaskTypeId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="EmployeeId" class="control-label"></label>
                 <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsReady" /> @Html.DisplayNameFor(model => model.IsReady)
-                </label>
-            </div>
+
             <div class="form-group">
                 <label asp-for="StartTime" class="control-label"></label>
                 <input asp-for="StartTime" class="form-control" />

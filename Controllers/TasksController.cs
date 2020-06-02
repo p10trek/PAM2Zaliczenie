@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -6,13 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Models;
+using PAM2Zaliczenie.BLL;
+using System.Security.Claims;
 
 namespace PAM2Zaliczenie.Controllers
 {
     public class TasksController : Controller
     {
         private readonly PAM_KillersDBContext _context;
-
+       
         public TasksController(PAM_KillersDBContext context)
         {
             _context = context;
@@ -49,9 +52,14 @@ namespace PAM2Zaliczenie.Controllers
         // GET: Tasks/Create
         public IActionResult Create()
         {
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "Id", "Name");
-            ViewData["Name"] = new SelectList(_context.TaskType, "Id", "Comment");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Login");
+
+            ViewData["EmployeeId"] = new SelectList(_context.Employee.Select(row => new ObjectHelper()
+            {
+                EmpGuid = row.Id,
+                EmpNamSur = row.Name + " " + row.Surname
+            }).ToList(), "EmpGuid", "EmpNamSur");
+       
+            ViewData["TaskTypeID"] = new SelectList(_context.TaskType, "Id", "Name");
             return View();
         }
 
@@ -64,6 +72,9 @@ namespace PAM2Zaliczenie.Controllers
         {
             if (ModelState.IsValid)
             {
+                tasks.Id = Guid.NewGuid();
+                var asdf = User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                tasks.UserId = new Guid(User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
                 _context.Add(tasks);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

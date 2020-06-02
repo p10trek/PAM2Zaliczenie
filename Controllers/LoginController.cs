@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
@@ -45,6 +46,7 @@ namespace PAM2Zaliczenie.Controllers
                 {
                     //dodaje wpisy do ciasteczka
                     new Claim(ClaimTypes.Name, currentUser.Login),
+                    new Claim(ClaimTypes.NameIdentifier, currentUser.Id.ToString()),
                     new Claim(ClaimTypes.Email, "zleceniamafia2.0@wp.pl"),
               };
                 userClaims.Add(new Claim(ClaimTypes.Role, currentUser.UserAccessLevel.ToString()));
