@@ -34,15 +34,24 @@
                                     <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                                 </li>
                             }
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Tasks" asp-action="Index">Tasks</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="TaskType" asp-action="Index">TaskType</a>
-                            </li>
+                            @if (@User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == "0" || @User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == "1")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Tasks" asp-action="Index">Tasks</a>
+                                </li>
+                            }
+                            @if (@User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == "0" || @User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == "1")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                                </li>
+                            }
+                            @if (@User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == "2")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="TaskType" asp-action="Index">TaskType</a>
+                                </li>
+                            }
                             <!--Sprawdza czy zalogowany-->
                             @if (@User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == null)
                             {
@@ -65,7 +74,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
                                 </li>
-                            }}
+                            }
                             <li class="nav-item">
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
@@ -80,8 +89,8 @@
             </main>
             <img class="bg-image" asp-append-version="true" alt="Alternate Text" />
         </div>
-     
-    
+
+
     </div>
 
     <footer class="border-top footer text-muted">

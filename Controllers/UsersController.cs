@@ -6,17 +6,21 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PAM2Zaliczenie.DAL;
+using PAM2Zaliczenie.Email;
 using PAM2Zaliczenie.Models;
 
 namespace PAM2Zaliczenie.Controllers
 {
     public class UsersController : Controller
     {
+        private readonly IEmailService _emailService;
         private readonly PAM_KillersDBContext _context;
 
-        public UsersController(PAM_KillersDBContext context)
+        public UsersController(PAM_KillersDBContext context, IEmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
+
         }
 
         // GET: Users
@@ -64,7 +68,22 @@ namespace PAM2Zaliczenie.Controllers
                 users.Id = Guid.NewGuid();
                 _context.Add(users);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                //wysyłka emaila z potwierdzeniem rejestracji
+
+                EmailAddress toEmailAddress = new EmailAddress();
+                toEmailAddress.Name = users.Login;
+                toEmailAddress.Address = users.EmailAddress;
+
+                //tworzenie wiadomosci dodawanie nadawcy, odbiorcy, tematu i treści wiadomości
+                EmailMessage mail = new EmailMessage();
+                mail.ToAddress = toEmailAddress;
+                mail.Subject = "Registration confirmation";
+                mail.Content = "Thank you " + users.Login + " for registration!";
+
+                //wysylka emaila
+                _emailService.Send(mail);
+                return RedirectToAction(nameof(Index), typeof(HomeController));
             }
             return View(users);
         }
