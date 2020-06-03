@@ -45,29 +45,39 @@
 		\begin{itemize}
 			\item dostęp do aplikacji poprzez przeglądarkę www (PC, smartphone),
 			\item rejestrację i logowanie użytkowników,
-			\item przeglądanie oferty zleceń,
-			\item wysłania e-maila do użytkownika z potwierdzeniem rejestracji/zlecenia,
+			\item przeglądanie i składnie ofert zleceń,
+			\item wysłania e-maila do użytkownika z potwierdzeniem rejestracji,
 			\item wyświetlenie aktualnego kursu Franka Szwajcarskiego (CHF),
-			\item Polską i Angielską lokalizacje;
+			\item dodawanie pracowników wykonujących zlecenia.
 		\end{itemize}
 	\newpage
 
 	%Sekcja druga, opis wdrożonych kwalifikacji
 	\section{Wdrożone kwalifikacje}	
-		\indent Aplikacja została stworzona na bazie frameworku aplikacji webowych ASP .NET Core i~opartej na wzorcu Model-View-Controller(MVC), posiada wbudowany router oraz wykorzystuje
-		silnik Razer do dynamicznego generowania wysyłanych plików HTML.
-		Do zarządzania zależnościami w projekcie wykorzystaliśmy menadżer pakietów NuGet.
-		Wykorzystanie w projekcie Bootstrapa zapewnia ostylowanie i RWD frontendu aplikacji internetowej ,,Mafia 2.0''.
-		Użytkownik przy pomocy formularzy posiada możliwość rejestracji, logowania i przesyłania innych danych do aplikacji.
-		Do komunikacji z zewnętrzną bazą danych Microsoft SQL Server, został wykorzystany EntityFramework, który zapewnia system mapowania relacyjno-obiektowego (ORM)
-		oraz umożliwia dodawanie, usuwanie i~edycję rekordów w~bazie danych.
-		Poprzez zastosowaniu pakietu MailKit można z poziomu aplikacji łączyć się z serwerem pocztowym i wysyłać e-maile.
-		System zleceń mafijnych ,,Mafia 2.0'' wykorzystuje zewnętrzne API w celu pobrania aktualnego kursu Franka Szwajcarskiego, dodatkowo aplikacji wystawia API z danymi
-		dotyczącymi wykonywanych zleceń.
-		Każda akcja wykonująca działanie na bazie danych jest zapisywana.
-		W ramach optymalizacji SEO została uruchomiona kompresja gzip na reverse proxy NGINX dodatkowo dzięki użyciu pakietu Grunt zautomatyzowano mimifikację JavaScript i CSS.
-		Wszystkie statyczne pliki (.css, .js, .png, .jpg, .gif, .svg) mają ustawiony cache na 365 dni oraz dodatkowo wystawiają wersję kontrolną, dzięki czemu w~przypadku zmiany na serwerze
-		przeglądarka może pobrać nową wersję pliku przed upływem określonego czasu. Aplikacja jest zlokalizowana w języku polskim i~angielskim.
+		\indent W projekcie wdrożono następujące kwalifikacje:
+		\begin{itemize}
+			\item \textbf{HTML5}, szkielet aplikacji webowej
+			\item \textbf{CSS3}, ostylowanie aplikacji webowej
+			\item \textbf{formularze}, wykorzystanie formularza do przesyłu danych do aplikacji
+			\item \textbf{baza danych}, połączenie z zewnętrzną bazą danych
+			\item \textbf{router}, zarządzenie ścieżkami dostępu aplikacji
+			\item \textbf{uwierzytelnianie}, umożliwienie rejestracji i logowania użytkowników
+			\item \textbf{MVC}, wykorzystanie wzorca model-widok-kontroler
+			\item \textbf{CRUD}, operacje dodawania, edycji i usuwania rekordów z bazy danych
+			\item \textbf{ORM}, system mapowania relacyjno-obiektowego 
+			\item \textbf{wystawienie API}, wystawienie udokumentowanych adresów URL z informacjami
+			\item \textbf{konsumowanie API}, wykorzystanie zewnętrznego API w systemie 
+			\item \textbf{AJAX}, wykorzystanie asynchronicznych zapytań ze strony frontendu
+			\item \textbf{mail}, wysyłanie emaili z systemu 
+			%\item \textbf{lokalizacja}, umożliwienie wielojęzyczności systemu 
+			\item \textbf{RWD}, poprawne wyświetlanie frontendu na różnych urządzeniach 
+			%\item \textbf{logger}, logowanie akcji w aplikacji
+			\item \textbf{cache}, np. wyszukiwarka wykorzystująca system pamięci podręcznej
+			\item \textbf{system zarządzania zależnościami} wykorzystany przy projekcie
+			\item \textbf{automatyzacja}, na przykład wykorzystanie Sass albo minifikowanie JS 
+			\item \textbf{SEO}, wprowadzenie optymalizacji dla wyszukiwarek
+		\end{itemize}
+		
 	\newpage
 
 	%sekcja trzecia, opis wykorzystanych technologii
