@@ -1,4 +1,5 @@
 ﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
                                 <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <!--Tylko admin widzi listę użytkowników-->
-                            @if (@User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == "0")
+                            @if (@User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == "0")
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
@@ -43,7 +44,7 @@
                                 <a class="nav-link text-white" asp-area="" asp-controller="TaskType" asp-action="Index">TaskType</a>
                             </li>
                             <!--Sprawdza czy zalogowany-->
-                            @if (@User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == null)
+                            @if (@User.FindFirst(claim => claim.Type == ClaimTypes.Role)?.Value == null)
                             {
                                 <!--Wyświetla odnośniki do rejestracji-->
                                 <li class="nav-item">
@@ -58,7 +59,7 @@
                             {
                                 <!--Wyświetla odnośniki do edycji aktualnie zalogowanego użytkownika-->
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Edit" asp-route-id="">@User.Identity.Name</a>
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="SelfDetails" asp-route-id="@User.FindFirst(Claim=>Claim.Type==ClaimTypes.NameIdentifier).Value">@User.Identity.Name</a>
                                 </li>
                                 <!--Wyświetla odnośnik do wylogowania-->
                                 <li class="nav-item">
