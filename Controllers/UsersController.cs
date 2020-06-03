@@ -83,7 +83,7 @@ namespace PAM2Zaliczenie.Controllers
 
                 //wysylka emaila
                 _emailService.Send(mail);
-                return RedirectToAction(nameof(Index), typeof(HomeController));
+                return RedirectToAction("Index", "Home");
             }
             return View(users);
         }
