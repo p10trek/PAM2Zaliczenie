@@ -3,9 +3,7 @@ Kierunek: Informatyka
 Specjalnoœæ: Projektowanie aplikacji mobilnych (n2PAM1 2020)
 
 Do zaimplementowania:
-[] Formularze, wykorzystanie formularza do przesy³u danych do aplikacji
-[] Uwierzytelnianie, umo¿liwienie rejestracji i logowania u¿ytkowników
-[] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych
+
 [] Wystawienie API, wystawienie udokumentowanych adresów URL z informacjami
 [] Konsumowanie API, wykorzystanie zewnêtrznego API w systemie
 [] AJAX, wykorzystanie asynchronicznych zapytañ ze strony frontendu
@@ -13,7 +11,6 @@ Do zaimplementowania:
 [] Logger, logowanie akcji w aplikacji
 
 Czêœciowo zaimplementowane:
-[/] Mail, wysy³anie emaili z systemu - Potwierdzenie z³o¿enia zlecenia - backend przy pomocy MailKit
 
 Zaimplementowane:
 [X] MVC, wykorzystanie wzorca model-widok-kontroler
@@ -27,3 +24,8 @@ Zaimplementowane:
 [X] Automatyzacja, na przyk³ad wykorzystanie Sass albo minifikowanie JS - minifikacja css i js przy pomocy pakietu Grunt
 [X] Cache, np. wyszukiwarka wykorzystuj¹ca system pamiêci podrêcznej - cache statycznych plików z kontrol¹ wersji
 [X] SEO, wprowadzenie optymalizacji dla wyszukiwarek - w³¹czono kompresjê gzip na serwerze NGINX
+[X] Mail, wysy³anie emaili z systemu - Potwierdzenie z³o¿enia zlecenia - wysy³anie potwierdzenia emaila
+[X] Uwierzytelnianie, umo¿liwienie rejestracji i logowania u¿ytkowników - uwierzytelnianie przy pomocy cookie
+[X] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych - Przesy³anie danych do bazy przy pomocy formularzy
+[X] Formularze, wykorzystanie formularza do przesy³u danych do aplikacji - Przesy³anie danych do bazy przy pomocy formularzy
+
