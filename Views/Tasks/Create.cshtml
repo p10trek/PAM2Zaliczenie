@@ -19,8 +19,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TaskTypeId" class="control-label"></label>
-                <select asp-for="TaskTypeId" class="form-control" asp-items="ViewBag.TaskTypeId"></select>
+                <select id="TaskSelector" asp-for="TaskTypeId" onchange="ShowPaymentInfo()" class="form-control" asp-items="ViewBag.TaskTypeId"></select>
             </div>
+            @foreach (var el in (List<ObjectHelper>)ViewData["TaskInfo"])
+            {
+                <label class="testowo" hidden id="@el.TaskGuid" >@el.TaskCostInfo</label>
+            }
             <div class="form-group">
                 <label asp-for="EmployeeId" class="control-label"></label>
                 <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
@@ -41,7 +45,30 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<script>
+    function onLoadFunctions() {
+        ShowPaymentInfo();
+    }
+    window.onload = onLoadFunctions;
 
+    function ShowPaymentInfo() {
+         
+        var selected = document.getElementById("TaskSelector").value;
+        selected = selected.toUpperCase()      
+        var labels = document.getElementsByClassName("testowo");
+        var i = labels.length;
+
+        while (i--) {
+            labels[i].hidden = "hidden";
+            if (selected == labels[i].id) {
+                labels[i].hidden = "";
+            }
+        }
+
+
+
+    }
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

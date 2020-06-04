@@ -19,4 +19,5 @@ namespace PAM2Zaliczenie
                     webBuilder.UseStartup<Startup>();
                 });
     }
+
 }

@@ -9,6 +9,8 @@ using PAM2Zaliczenie.DAL;
 using PAM2Zaliczenie.Models;
 using PAM2Zaliczenie.BLL;
 using System.Security.Claims;
+using ExchangeRate;
+using System.Globalization;
 
 namespace PAM2Zaliczenie.Controllers
 {
@@ -52,14 +54,24 @@ namespace PAM2Zaliczenie.Controllers
         // GET: Tasks/Create
         public IActionResult Create()
         {
-
+            string currency = "USD";
+            CurrencyChecker currencyChecker = new CurrencyChecker();
+            ///hardcoded to take usd
+            CultureInfo culture = new CultureInfo("en-US");
+            decimal tempCurrencyValue = Convert.ToDecimal(currencyChecker.ReturnData(currencyChecker.GetData(currency)), culture);
             ViewData["EmployeeId"] = new SelectList(_context.Employee.Select(row => new ObjectHelper()
             {
                 EmpGuid = row.Id,
                 EmpNamSur = row.Name + " " + row.Surname
             }).ToList(), "EmpGuid", "EmpNamSur");
-       
+          
             ViewData["TaskTypeID"] = new SelectList(_context.TaskType, "Id", "Name");
+            ViewData["TaskInfo"] = _context.TaskType.Select(row => new ObjectHelper()
+            {
+                TaskGuid = row.Id.ToString(),
+                ValueInCurr = $"{(row.Cost / tempCurrencyValue).ToString()} {currency}",
+                TaskCostInfo = $"Work will be cost {row.Cost.ToString()} in PLN and {(row.Cost / tempCurrencyValue).ToString()} in {currency}"
+            }).ToList<ObjectHelper>(); 
             return View();
         }
 
@@ -73,7 +85,7 @@ namespace PAM2Zaliczenie.Controllers
             if (ModelState.IsValid)
             {
                 tasks.Id = Guid.NewGuid();
-                var asdf = User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+                //var asdf = User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
                 tasks.UserId = new Guid(User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
                 _context.Add(tasks);
                 await _context.SaveChangesAsync();
