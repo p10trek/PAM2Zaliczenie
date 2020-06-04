@@ -86,7 +86,7 @@ td {
 }
 
 .bg-image {
-    background-image: url("../css/d.jpg");
+    background-image: url("../css/bg.jpg");
     filter: blur(9px);
     -webkit-filter: blur(9px);
     height: 100%;
