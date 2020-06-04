@@ -10,7 +10,7 @@ namespace PAM2Zaliczenie.Models
         public string TaskName { get; set; }
         public string Employee { get; set; }
         public DateTime StartTime { get; set; }
-        public DateTime TimeToEnd { get; set; }
+        public double HoursToEnd { get; set; }
         public bool IsDone { get; set; }
         public bool IsError { get; set; }
         public string Error { get; set; }

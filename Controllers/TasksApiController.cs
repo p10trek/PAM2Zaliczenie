@@ -41,7 +41,7 @@ namespace PAM2Zaliczenie.Controllers
                                      TaskName = taskType.Name,
                                      Employee = $"{employee.Name} {employee.Surname}",
                                      StartTime = tasks.StartTime,
-                                     TimeToEnd = (tasks.StartTime<DateTime.Now)? DateTime.MinValue : tasks.StartTime.Subtract((DateTime.Now - tasks.StartTime)),
+                                     HoursToEnd = (tasks.StartTime - DateTime.Now).TotalHours,
                                      IsDone = (tasks.StartTime < DateTime.Now)? true:false,
                                      IsError = false,
                                      Error = null
@@ -69,7 +69,7 @@ namespace PAM2Zaliczenie.Controllers
                                      TaskName = taskType.Name,
                                      Employee = $"{employee.Name} {employee.Surname}",
                                      StartTime = tasks.StartTime,
-                                     TimeToEnd = (tasks.StartTime < DateTime.Now) ? DateTime.MinValue : tasks.StartTime.Subtract((DateTime.Now - tasks.StartTime)),
+                                     HoursToEnd = (tasks.StartTime - DateTime.Now).TotalHours,
                                      IsDone = (tasks.StartTime < DateTime.Now) ? true : false,
                                      IsError = false,
                                      Error = null
