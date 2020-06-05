@@ -26,8 +26,19 @@ namespace PAM2Zaliczenie.Controllers
         // GET: Tasks
         public async Task<IActionResult> Index()
         {
-            var pAM_KillersDBContext = _context.Tasks.Include(t => t.Employee).Include(t => t.TaskType).Include(t => t.User);
-            return View(await pAM_KillersDBContext.ToListAsync());
+             
+            if (User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.Role)?.Value == 0.ToString())
+            {
+
+                return View(await _context.Tasks.Include(t => t.Employee).Include(t => t.TaskType).Include(t => t.User).ToListAsync());
+            }
+            else
+            {
+                Guid UserID = new Guid(User.FindFirst(claim => claim.Type == System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
+                return View(await _context.Tasks.Include(t => t.Employee).Include(t => t.TaskType).Include(t => t.User)
+                    .Where(row => row.UserId == UserID)
+                    .ToListAsync());
+            }
         }
 
         // GET: Tasks/Details/5
@@ -54,11 +65,12 @@ namespace PAM2Zaliczenie.Controllers
         // GET: Tasks/Create
         public IActionResult Create()
         {
+            ///hardcoded USD!!!
             string currency = "USD";
             CurrencyChecker currencyChecker = new CurrencyChecker();
-            ///hardcoded to take usd
+            string currencyValue = currencyChecker.ReturnData(currencyChecker.GetData(currency));
             CultureInfo culture = new CultureInfo("en-US");
-            decimal tempCurrencyValue = Convert.ToDecimal(currencyChecker.ReturnData(currencyChecker.GetData(currency)), culture);
+            decimal tempCurrencyValue = Convert.ToDecimal(currencyValue, culture);
             ViewData["EmployeeId"] = new SelectList(_context.Employee.Select(row => new ObjectHelper()
             {
                 EmpGuid = row.Id,
@@ -69,8 +81,8 @@ namespace PAM2Zaliczenie.Controllers
             ViewData["TaskInfo"] = _context.TaskType.Select(row => new ObjectHelper()
             {
                 TaskGuid = row.Id.ToString(),
-                ValueInCurr = $"{(row.Cost / tempCurrencyValue).ToString()} {currency}",
-                TaskCostInfo = $"Work will be cost {row.Cost.ToString()} in PLN and {(row.Cost / tempCurrencyValue).ToString()} in {currency}"
+                ValueInCurr = $"{(row.Cost / tempCurrencyValue).ToString("0.00")} {currency}",
+                TaskCostInfo = $"Work will be cost {row.Cost.ToString()} in PLN and {(row.Cost / tempCurrencyValue).ToString("0.00")} in {currency}"
             }).ToList<ObjectHelper>(); 
             return View();
         }

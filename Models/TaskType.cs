@@ -15,6 +15,7 @@ namespace PAM2Zaliczenie.Models
         public string Name { get; set; }
         [Range(0, 24)]
         public long Duration { get; set; }
+        [Range(0,1000000)]
         public decimal Cost { get; set; }
         public string Comment { get; set; }
 
