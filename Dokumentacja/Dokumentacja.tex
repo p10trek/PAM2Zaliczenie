@@ -47,7 +47,7 @@
 			\item rejestrację i logowanie użytkowników,
 			\item przeglądanie i składnie ofert zleceń,
 			\item wysłania e-maila do użytkownika z potwierdzeniem rejestracji,
-			\item wyświetlenie aktualnego kursu Franka Szwajcarskiego (CHF),
+			\item wyświetlenie aktualnego kursu dolara (USD),
 			\item dodawanie pracowników wykonujących zlecenia.
 		\end{itemize}
 	\newpage
@@ -56,26 +56,26 @@
 	\section{Wdrożone kwalifikacje}	
 		\indent W projekcie wdrożono następujące kwalifikacje:
 		\begin{itemize}
-			\item \textbf{HTML5}, szkielet aplikacji webowej
-			\item \textbf{CSS3}, ostylowanie aplikacji webowej
-			\item \textbf{formularze}, wykorzystanie formularza do przesyłu danych do aplikacji
-			\item \textbf{baza danych}, połączenie z zewnętrzną bazą danych
-			\item \textbf{router}, zarządzenie ścieżkami dostępu aplikacji
-			\item \textbf{uwierzytelnianie}, umożliwienie rejestracji i logowania użytkowników
-			\item \textbf{MVC}, wykorzystanie wzorca model-widok-kontroler
-			\item \textbf{CRUD}, operacje dodawania, edycji i usuwania rekordów z bazy danych
-			\item \textbf{ORM}, system mapowania relacyjno-obiektowego 
-			\item \textbf{wystawienie API}, wystawienie udokumentowanych adresów URL z informacjami
-			\item \textbf{konsumowanie API}, wykorzystanie zewnętrznego API w systemie 
-			\item \textbf{AJAX}, wykorzystanie asynchronicznych zapytań ze strony frontendu
-			\item \textbf{mail}, wysyłanie emaili z systemu 
-			%\item \textbf{lokalizacja}, umożliwienie wielojęzyczności systemu 
-			\item \textbf{RWD}, poprawne wyświetlanie frontendu na różnych urządzeniach 
+			\item \textbf{HTML5},
+			\item \textbf{CSS3},
+			\item \textbf{formularze},
+			\item \textbf{baza danych},
+			\item \textbf{router},
+			\item \textbf{uwierzytelnianie},
+			\item \textbf{MVC},
+			\item \textbf{CRUD},
+			\item \textbf{ORM}, 
+			\item \textbf{wystawienie API},
+			\item \textbf{konsumowanie API},
+			\item \textbf{AJAX}, 
+			\item \textbf{mail},
+			%\item \textbf{lokalizacja},
+			\item \textbf{RWD},
 			%\item \textbf{logger}, logowanie akcji w aplikacji
-			\item \textbf{cache}, np. wyszukiwarka wykorzystująca system pamięci podręcznej
-			\item \textbf{system zarządzania zależnościami} wykorzystany przy projekcie
-			\item \textbf{automatyzacja}, na przykład wykorzystanie Sass albo minifikowanie JS 
-			\item \textbf{SEO}, wprowadzenie optymalizacji dla wyszukiwarek
+			\item \textbf{cache},
+			\item \textbf{system zarządzania zależnościami}, 
+			\item \textbf{automatyzacja},
+			\item \textbf{SEO},
 		\end{itemize}
 		
 	\newpage
@@ -267,6 +267,12 @@
 			\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
 				\url {http://localhost:5000}
 			\end{tcolorbox}
+			
+			W systemie jest domyślnie założone konto administracyjne o danych do logowania:
+			\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
+						login: admin\\
+						hasło: admin
+			\end{tcolorbox}
 			\noindent W zależności od mocy obliczeniowej używanego komputera pierwsze uruchomienie aplikacji po starcie systemu operacyjnego może trwać dłużej.		
 		
 		\subsection{Zdalne uruchomienie systemu}
@@ -284,7 +290,7 @@
 			\begin{enumerate}
 				\item Po wydaniu polecenia:
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\scriptsize]
-						wget -O - https://github.com/Karpfly2822/Test-VS-Repo/releases/download/1/PAM\_Linux\_Installer.sh $|$ bash
+						wget -O - https://github.com/p10trek/PAM2Zaliczenie/releases/download/1.0/PAM\_Linux\_Installer.sh $|$ bash
 					\end{tcolorbox}			
 					nastąpi pobranie i instalacja wszystkich(oprócz Ubuntu) wymaganych pakietów oraz samej aplikacji systemu zleceń.
 			
@@ -292,12 +298,15 @@
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]			
 						sudo /opt/mssql/bin/mssql-conf setup
 					\end{tcolorbox}
-					Gdzie należy podać hasło, wybrać typ instalacji (3 Express) i język użytkownika.
+					Gdzie należy wybrać typ instalacji (3 Express), zaakceptować licencję oraz podać hasło administracyjne.
 					
 				\item Po zakończeniu konfiguracji należy połączyć się z serwerem bazy danych i przywrócić bazę z pliku
-					PAM\_KillersDB.bak znajdującego się w ,,/var/opt/mssql/backup/''.	
+					PAM\_KillersDB.bak znajdującego się w ,,/var/opt/mssql/backup/'' poprzez podanie komendy:
 					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]			
-						/opt/mssql-tools/bin/sqlcmd -S localhost -U SA \\
+						/opt/mssql-tools/bin/sqlcmd -S localhost -U SA
+					\end{tcolorbox}
+					wprowadzenie hasła administracyjnego a następnie wydaniu komend:
+					\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]			
 						RESTORE DATABASE PAM\_KillersDB	\\
 						FROM DISK = '/var/opt/mssql/backup/PAM\_KillersDB.bak'	\\
 						WITH MOVE 'PAM\_KillersDB' TO '/var/opt/mssql/data/PAM\_KillersDB.mdf',	\\
@@ -356,6 +365,12 @@
 				\item Aby aplikacja była dostępna poprzez sieć internet należy przekierować port 80 w konfiguracji routera (wartość ,,listen 80'' w konfiguracji NGINX).
 				\item Od tej chwili aplikacja będzie dostępna z dowolnej przeglądarki internetowej, poprzez udanie się pod adres ip lub domenę serwera. 
 			\end{enumerate}
+			
+			W systemie jest domyślnie założone konto administracyjne o danych do logowania:
+			\begin{tcolorbox}[minipage,colback=white,arc=0pt,outer arc=0pt, fontupper=\footnotesize]
+						login: admin\\
+						hasło: admin
+			\end{tcolorbox}
 	\newpage
 	
 	\section{Wnioski projektowe}

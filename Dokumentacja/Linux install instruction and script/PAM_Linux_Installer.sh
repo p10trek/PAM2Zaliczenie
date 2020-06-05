@@ -6,7 +6,7 @@ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 sudo add-apt-repository "$(wget -qO- https://packages.microsoft.com/config/ubuntu/18.04/mssql-server-2019.list)"
 sudo apt-get update
 sudo apt-get install -y apt-transport-https aspnetcore-runtime-3.1 mssql-server mssql-tools unixodbc-dev nginx
-wget https://github.com/Karpfly2822/Test-VS-Repo/releases/download/1/iss_linux.tar.gz -O iss_linux.tar.gz
+wget https://github.com/Karpfly2822/Test-VS-Repo/releases/download/1/PAM_Killers_Linux_Setup -O iss_linux.tar.gz
 tar -xvzf iss_linux.tar.gz
 rm iss_linux.tar.gz
 sudo mkdir /var/www/PAM
