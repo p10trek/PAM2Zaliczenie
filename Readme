@@ -1,31 +1,30 @@
-Projekt na zaliczenie przedmiotu: Projektowanie i programowanie systemów internetowych I w Pañstwowej Wy¿szej Szkole Zawodowej im. Witelona w Legnicy
+Projekt na zaliczenie przedmiotu: Projektowanie i programowanie systemÃ³w internetowych I w PaÅ„stwowej WyÅ¼szej Szkole Zawodowej im. Witelona w Legnicy
 Kierunek: Informatyka
-Specjalnoœæ: Projektowanie aplikacji mobilnych (n2PAM1 2020)
+SpecjalnoÅ›Ä‡: Projektowanie aplikacji mobilnych (n2PAM1 2020)
 
 Do zaimplementowania:
 
-[] Wystawienie API, wystawienie udokumentowanych adresów URL z informacjami
-[] Konsumowanie API, wykorzystanie zewnêtrznego API w systemie
-[] AJAX, wykorzystanie asynchronicznych zapytañ ze strony frontendu
-[] Lokalizacja, umo¿liwienie wielojêzycznoœci systemu
+[] Lokalizacja, umoÅ¼liwienie wielojÄ™zycznoÅ›ci systemu
 [] Logger, logowanie akcji w aplikacji
 
-Czêœciowo zaimplementowane:
+CzÄ™Å›ciowo zaimplementowane:
 
 Zaimplementowane:
 [X] MVC, wykorzystanie wzorca model-widok-kontroler
-[X] Router, zarz¹dzenie œcie¿kami dostêpu aplikacji - Startup.cs
+[X] Router, zarzÄ…dzenie Å›cieÅ¼kami dostÄ™pu aplikacji - Startup.cs
 [X] CSS3, ostylowanie aplikacji webowej - Bootstrap
-[X] Baza danych, po³¹czenie z zewnêtrzn¹ baz¹ danych - MSSQL/Entity Framework
-[X] System zarz¹dzania zale¿noœciami wykorzystany przy projekcie - NuGet
+[X] Baza danych, poÅ‚Ä…czenie z zewnÄ™trznÄ… bazÄ… danych - MSSQL/Entity Framework
+[X] System zarzÄ…dzania zaleÅ¼noÅ›ciami wykorzystany przy projekcie - NuGet
 [X] HTML5, szkielet aplikacji webowej - Razor Enginge
 [X] ORM, system mapowania relacyjno-obiektowego - Entity framework
-[X] RWD, poprawne wyœwietlanie frontendu na ró¿nych urz¹dzeniach - Bootstrap
-[X] Automatyzacja, na przyk³ad wykorzystanie Sass albo minifikowanie JS - minifikacja css i js przy pomocy pakietu Grunt
-[X] Cache, np. wyszukiwarka wykorzystuj¹ca system pamiêci podrêcznej - cache statycznych plików z kontrol¹ wersji
-[X] SEO, wprowadzenie optymalizacji dla wyszukiwarek - w³¹czono kompresjê gzip na serwerze NGINX
-[X] Mail, wysy³anie emaili z systemu - Potwierdzenie z³o¿enia zlecenia - wysy³anie potwierdzenia emaila
-[X] Uwierzytelnianie, umo¿liwienie rejestracji i logowania u¿ytkowników - uwierzytelnianie przy pomocy cookie
-[X] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych - Przesy³anie danych do bazy przy pomocy formularzy
-[X] Formularze, wykorzystanie formularza do przesy³u danych do aplikacji - Przesy³anie danych do bazy przy pomocy formularzy
-
+[X] RWD, poprawne wyÅ›wietlanie frontendu na rÃ³Å¼nych urzÄ…dzeniach - Bootstrap
+[X] Automatyzacja, na przykÅ‚ad wykorzystanie Sass albo minifikowanie JS - minifikacja css i js przy pomocy pakietu Grunt
+[X] Cache, np. wyszukiwarka wykorzystujÄ…ca system pamiÄ™ci podrÄ™cznej - cache statycznych plikÃ³w z kontrolÄ… wersji
+[X] SEO, wprowadzenie optymalizacji dla wyszukiwarek - wÅ‚Ä…czono kompresjÄ™ gzip na serwerze NGINX
+[X] Mail, wysyÅ‚anie emaili z systemu - Potwierdzenie zÅ‚oÅ¼enia zlecenia - wysyÅ‚anie potwierdzenia emaila
+[X] Uwierzytelnianie, umoÅ¼liwienie rejestracji i logowania uÅ¼ytkownikÃ³w - uwierzytelnianie przy pomocy cookie
+[X] CRUD, operacje dodawania, edycji i usuwania rekordÃ³w z bazy danych - PrzesyÅ‚anie danych do bazy przy pomocy formularzy
+[X] Formularze, wykorzystanie formularza do przesyÅ‚u danych do aplikacji - PrzesyÅ‚anie danych do bazy przy pomocy formularzy
+[X] Wystawienie API, wystawienie udokumentowanych adresÃ³w URL z informacjami
+[X] Konsumowanie API, wykorzystanie zewnÄ™trznego API w systemie
+[X] AJAX, wykorzystanie asynchronicznych zapytaÅ„ ze strony frontendu
