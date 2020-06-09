@@ -21,10 +21,10 @@ Zaimplementowane:
 [X] Automatyzacja, na przykład wykorzystanie Sass albo minifikowanie JS - minifikacja css i js przy pomocy pakietu Grunt
 [X] Cache, np. wyszukiwarka wykorzystująca system pamięci podręcznej - cache statycznych plików z kontrolą wersji
 [X] SEO, wprowadzenie optymalizacji dla wyszukiwarek - włączono kompresję gzip na serwerze NGINX
-[X] Mail, wysyłanie emaili z systemu - Potwierdzenie złożenia zlecenia - wysyłanie potwierdzenia emaila
+[X] Mail, wysyłanie emaili z systemu - Wysyłanie informacji o założeniu konta
 [X] Uwierzytelnianie, umożliwienie rejestracji i logowania użytkowników - uwierzytelnianie przy pomocy cookie
 [X] CRUD, operacje dodawania, edycji i usuwania rekordów z bazy danych - Przesyłanie danych do bazy przy pomocy formularzy
 [X] Formularze, wykorzystanie formularza do przesyłu danych do aplikacji - Przesyłanie danych do bazy przy pomocy formularzy
 [X] Wystawienie API, wystawienie udokumentowanych adresów URL z informacjami
 [X] Konsumowanie API, wykorzystanie zewnętrznego API w systemie
-[X] AJAX, wykorzystanie asynchronicznych zapytań ze strony frontendu
+[X] LINQ, wykorzystanie asynchronicznych zapytań ze strony frontendu
